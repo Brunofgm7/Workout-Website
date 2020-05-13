@@ -1,0 +1,444 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    background-color: #660000;
+    list-style: none;
+    text-decoration: none;
+}
+
+nav {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    min-height: 8vh;
+    background-color: #660000;
+    font-family: 'Poppins', sans-serif;
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+
+h2 {
+    font-family: 'Poppins', sans-serif;
+    letter-spacing: 3px;
+    color: rgb(219, 217, 217);
+    
+}
+div p {
+    font-family: 'Poppins', sans-serif;
+    color: rgb(155, 155, 155);
+}
+
+.container img {
+    padding-top: 4%;
+}
+
+.container .texto {
+   padding-left: 10%;
+}
+body .treinos {
+    width: 100%;
+    height: 100%;
+}
+.logo img {
+    width: 40%;
+    height: 100%;
+}
+.ol {
+    display: grid;
+    grid-template-columns: 3fr 3fr 3fr;
+}
+.ol div {
+    text-align: center;
+}
+
+.polaroid {
+    width: 80%;
+    background-color: white;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    margin:auto;
+}
+.polaroid2 {
+    width: 60%;
+    /*background-color: blue;*/
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    margin:auto;
+}
+.nada {
+    background-color: white;
+}
+  .con p {
+      background-color: white;
+      color: rgb(39, 39, 39);
+      font-size:1.2vw;
+  }
+ div.con {
+    text-align: center;
+    padding: 10px 20px;
+    background-color: white;
+}
+
+.container img{
+    width:100%;
+    height: 100%;
+}
+
+.nav-links{
+    display: flex;
+    justify-content: space-around;
+    width: 50%;
+}
+
+.nav-links li{
+    list-style: none;
+}
+
+.nav-links a{
+    color: rgb(226, 226, 226);
+    text-decoration: none;
+    letter-spacing: 2px;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.nav-links .login a {
+    color: rgb(168, 168, 168);
+    text-decoration: none;
+    letter-spacing: 2px;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.burger {
+    display: none;
+    cursor:pointer;
+}
+
+.burger div{
+    width: 25px;
+    height: 3px;
+    background-color: rgb(226, 226, 226);
+    margin:5px;  
+    transition: all 0.3s ease;  
+}
+
+@media screen and (max-width:1024px){
+    .nav-links{
+        width: 60%;
+    }
+    body {
+        overflow-x: hidden;
+    }    
+}
+
+@media screen and (max-width:1400px){
+    .container img {
+        padding-top: 8%;
+    }
+}
+
+html, body {
+    overflow-x:hidden 
+  }
+@media screen and (max-width:768px){
+    .container img {
+        padding-top: 12%;
+    }
+    body {
+        overflow-x: hidden;
+    }
+    .nav-links {
+        position: absolute;
+        right: 0px;
+        height: 92vh;
+        top:8vh;
+        background-color: #660000;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width:50%;
+        transform: translateX(100%);
+        transition: transform 0.5s ease-in;
+    }
+    .nav-links li{
+        opacity:0;
+    }
+    .burger {
+        display: block;
+    }
+}
+
+.nav-active {
+    transform: translate(0%);
+}
+
+@media screen and (max-width:550px){
+    .container img {
+        padding-top: 20%;
+    }
+}
+
+@keyframes navLinkFade{
+    from {
+        opacity:0;
+        transform:translateX(50px);
+    }
+    to {
+        opacity: 1;
+        transform:translateX(0px);
+    }
+}
+
+.toggle .line1 {
+    transform: rotate(-45deg) translate(-5px,6px);
+}
+.toggle .line2 {
+    opacity :0;
+}
+.toggle .line3 {
+    transform: rotate(45deg) translate(-5px,-6px);
+
+}
+
+/* SCROLLBAR */
+
+/* width */
+::-webkit-scrollbar {
+    width: 5px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+  }
+   
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #888; 
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555; 
+  }
+
+
+
+  .contai {
+    position: relative;
+    width: 60%;
+    margin:auto;
+  }
+  
+  .image {
+    opacity: 1;
+    display: block;
+    width: 100%;
+    height: auto;
+    transition: .5s ease;
+    backface-visibility: hidden;
+  }
+  
+  .middle {
+    transition: .5s ease;
+    opacity: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    text-align: center;
+    
+  }
+  
+  .contai:hover .image {
+    opacity: 0.3;
+  }
+  .middle a {
+      text-decoration: none;
+  }
+  .contai:hover .middle {
+    opacity: 1;
+  }
+  
+  /*PA METER TEXTO NAS IMAGENS*/
+  .text {
+    background-color: rgb(219, 217, 217);
+    color: #660000;
+    font-size: 20px;
+    font-style: 'Poppins';
+    padding: 25px 50px;
+    width: 100%;
+  }
+
+  .texto_exe {
+    margin:auto;
+    padding-right: 10%;
+    font-size:1.9vw;
+    text-align:left;
+  }
+.texto_exe p {
+    text-align:left;
+    color: rgb(219, 217, 217);
+    text-align:justify; /*"Para alinha texto, para n parecer que foi comido por ratos" - Bruno 2020*/
+}
+
+
+.footer{
+    width: 100vw;
+    background-color: rgb(39, 39, 39);
+    display: block;
+    overflow: hidden;
+    padding: 70px 50px 30px 50px;
+    box-sizing: border-box;
+    
+}
+.logo_container{
+    background-color: rgb(39, 39, 39);
+    text-align: center;
+
+}
+.outro {
+    text-align: center;
+    background-color: rgb(39, 39, 39);
+}
+.logo_container img {
+    height: auto;
+    width: 13%;
+    float:left;
+    background-color: rgb(39, 39, 39);
+
+}
+
+.myButton {
+	background-color:#ffffff;
+	border-radius:28px;
+	border:1px solid #fafafa;
+	display:inline-block;
+	cursor:pointer;
+	color:#242324;
+	font-family:'poppins';
+	font-size:17px;
+	padding:16px 31px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #2f6627;
+}
+.myButton:hover {
+	background-color:#b8b8b8;
+}
+.myButton:active {
+	position:relative;
+	top:1px;
+}
+
+.outro h1 {
+    font-size: 1.7vw;
+    font-family: 'poppins';
+    color: rgb(219, 217, 217);
+    letter-spacing: 3px;
+    display: inline;
+    background-color: rgb(39, 39, 39);
+    padding-right:20px;
+    
+}
+
+.copy {
+    bottom:0px;
+    text-align: center;
+    width:100%;
+    background-color: rgb(35, 35, 35);
+}
+
+.copy p {
+    color: white;
+    background-color: rgb(35, 35, 35);
+    font-size:1.2vw;
+    margin-left:5em;
+}
+
+/* Dias */
+
+table {
+    border: 1px solid #ccc;
+    border-collapse: collapse;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    table-layout: fixed;
+}
+
+table caption {
+font-size: 1.5em;
+margin: .5em 0 .75em;
+}
+
+table tr {
+background-color: #f8f8f8;
+border: 1px solid #ddd;
+padding: .35em;
+}
+
+table th,
+table td {
+padding: .625em;
+text-align: center;
+}
+
+table th {
+font-size: .85em;
+letter-spacing: .1em;
+text-transform: uppercase;
+}
+
+@media screen and (max-width: 600px) {
+    table {
+        border: 0;
+    }
+
+    table caption {
+        font-size: 1.3em;
+    }
+
+    table thead {
+        border: none;
+        clip: rect(0 0 0 0);
+        height: 1px;
+        margin: -1px;
+        overflow: hidden;
+        padding: 0;
+        position: absolute;
+        width: 1px;
+    }
+
+    table tr {
+        border-bottom: 3px solid #ddd;
+        display: block;
+        margin-bottom: .625em;
+    }
+
+    table td {
+        border-bottom: 1px solid #ddd;
+        display: block;
+        font-size: .8em;
+        text-align: right;
+    }
+
+    table td::before {
+        /* aria-label has no advantage, it won't be read inside a table
+        content: attr(aria-label);
+        */
+        content: attr(data-label);
+        float: left;
+        font-weight: bold;
+        text-transform: uppercase;
+    }
+
+    table td:last-child {
+        border-bottom: 0;
+    }
+}
+
+
+/* Bruno */
+
