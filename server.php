@@ -8,7 +8,7 @@ $email = "";
 $dataNasc = "";
 $errors = array();
 
-// include 'database.php';
+include 'database.php';
 $db = mysqli_connect('localhost','root','','workout');
 
 //se o botao registo for pressionado
@@ -71,7 +71,7 @@ if(isset($_POST['registo'])) {
         //encriptar a password para inserir na BD
         $password_encriptada = md5($password1);
         // insira o utilizador na BD
-        $sql = "INSERT INTO utilizadores (username, nome, email, password, dataNasc,tipoUtilizador,contaAtivada,chave) VALUES ('$username','$nome','$email','$password_encriptada','$dataNasc',0,0,'$key')";
+        $sql = "INSERT INTO utilizadores (username, nome, email, password, dataNasc,tipoUtilizador,contaAtivada,chave,foto) VALUES ('$username','$nome','$email','$password_encriptada','$dataNasc',0,0,'$key','fotos/stock.jpg')";
         mysqli_query($db,$sql);
 
         //enviar email de confirmação
@@ -97,7 +97,7 @@ if(isset($_POST['registo'])) {
         $mensagem = "<strong>$nome</strong>,<br />
                     Obrigado pelo seu registo!<br />
                     Para confirmar o registo e ativar a conta, clique no link abaixo.<br />
-                    <a href ='localhost/workout-website/verificacao.php?key=$key'>Ativar Conta</a><br />
+                    <a href ='http://localhost/workout-website/verificacao.php?key=$key'>Ativar Conta</a><br />
                     <b>Esta e uma mensagem automatica, por favor nao responda!</b>";
     
         $corpo_email = "<html><head><style>p{font-family:Arial;font-size:12px}</style></head><body>$mensagem</body>";
@@ -146,4 +146,127 @@ if(isset($_GET['logout'])) {
     header('location: login.php');
 }
 
+
+//Recuperar Palavra-passe
+if(isset($_POST['recuperar'])) {
+    $userEmail = mysqli_real_escape_string($db, $_POST['userEmail']);
+ 
+    if(empty($userEmail)) {
+        array_push($errors, "Username/Email não está preenchido");
+    }
+    if(count($errors) == 0) {
+        $query = "SELECT * FROM utilizadores WHERE username = '$userEmail' OR email = '$userEmail'";
+        $result = mysqli_query($db, $query);
+        if(mysqli_num_rows($result) == 1) {
+
+            $smt=$pdo->prepare('SELECT * FROM utilizadores WHERE username="Brunofgm7"');
+            $smt->execute();
+            $utilizador=$smt->fetch();
+            $key2 = $utilizador['chave'];
+            $emaill = $utilizador['email'];
+            $nomee = $utilizador['nome'];
+
+            //enviar email de confirmação
+            require_once 'PHPMailer/class.phpmailer.php';
+            
+            $mail = new PHPMailer();
+            $mail->IsSMTP();
+            $mail->SMTPSecure = "tls";
+            $mail->Host       = "smtp.gmail.com";
+            $mail->SMTPAuth = true;
+            $mail->Username = "workoutsiteES@gmail.com";
+            $mail->Password = "workoutsite";
+            $mail->Port       = 587;
+            $mail->Timeout=120;
+            $mail->SMTPDebug=0;
+            
+            $mail->FromName="Workout Website";
+
+            $mail->IsHTML(true);
+            
+            $mail->Subject = "Recuperação Palavra-passe";
+            
+            $mensagem = "<strong>$nomee</strong>,<br />
+                        Foi enviado um pedido de recuperação de senha.
+                        Para recuperar a palavra-passe, clique no link abaixo.<br />
+                        <a href ='localhost/workout-website/validacaoPass.php?key=$key2'>Recuperar palavra-passe</a><br />
+                        Se não pediu para recuperar a palavra-passe, ignore esta mensagem.<br />
+                        <b>Esta e uma mensagem automatica, por favor nao responda!</b>";
+
+            $corpo_email = "<html><head><style>p{font-family:Arial;font-size:12px}</style></head><body>$mensagem</body>";
+            $mail->SetFrom("workoutsiteES@gmail.com","Recuperação Palavra-passe");
+            $mail->AddAddress($emaill);
+            
+            $mail->Body=$corpo_email;
+            $mail->Send();
+
+            $key2 = $_POST['key'];
+
+            header('location: login.php?status=pass');
+
+        } else {
+            array_push($errors, "Username ou email não encontrado!");
+        }
+    }
+}
+
+if(isset($_POST['validacaoPass'])) {
+    $novaPalavraPasse = mysqli_real_escape_string($db, $_POST['novaPalavraPasse']);
+    $RepetirNovaPalavraPasse = mysqli_real_escape_string($db, $_POST['RepetirNovaPalavraPasse']);
+    $key = mysqli_real_escape_string($db, $_POST['key']);
+
+    if(empty($novaPalavraPasse)) {
+        array_push($errors, "Nova palavra-passe não está preenchido");
+    }
+    if(empty($RepetirNovaPalavraPasse)) {
+        array_push($errors, "Repetir nova palavra-passe não está preenchido");
+    }
+    if ($novaPalavraPasse != $RepetirNovaPalavraPasse) {
+        array_push($errors, 'Passwords não são correspondentes!');
+    }
+    if (strlen($_POST['novaPalavraPasse']) > 20 || strlen($_POST['novaPalavraPasse']) < 5 || strlen($_POST['RepetirNovaPalavraPasse']) > 20 || strlen($_POST['RepetirNovaPalavraPasse']) < 5) {
+        array_push($errors, 'Password must be between 5 and 20 characters long!');
+    }
+    if(count($errors) == 0) {
+        $novaPalavraPasse_encrip = md5($novaPalavraPasse);
+        $query = "SELECT * FROM utilizadores WHERE chave='$key'";
+        $result = mysqli_query($db, $query);
+        if(mysqli_num_rows($result) == 1) {
+            $smt=$pdo->prepare('UPDATE utilizadores SET password=? WHERE chave=?');
+            $smt->execute([$novaPalavraPasse_encrip, $key]);
+            $msg="Registo alterado com sucesso";
+            // redirecionar para a homepage
+            header('location: login.php?status=novapass');
+        } else {
+            array_push($errors, "Erro!");
+        }
+    }
+}
+/*
+if(isset($_POST['mudarPass'])) {
+    $RepetirNovaPassword = mysqli_real_escape_string($db, $_POST['PalavraPasseAtual']);
+    $NovaPassword = mysqli_real_escape_string($db, $_POST['NovaPassword']);
+    $RepetirNovaPassword = mysqli_real_escape_string($db, $_POST['RepetirNovaPassword']);
+
+    if(empty($PalavraPasseAtual)) {
+        array_push($errors, "Palavra-passe atual não está preenchido");
+    }
+    if(empty($NovaPassword)) {
+        array_push($errors, "Nova palavra-passe não está preenchido");
+    }
+    if(empty($RepetirNovaPassword)) {
+        array_push($errors, "Repetir nova palavra-passe não está preenchido");
+    }
+    if ($RepetirNovaPassword != $password) {
+        array_push($errors, "Palavra-passe atual está errada");
+    }
+    if ($NovaPassword != $RepetirNovaPassword) {
+        array_push($errors, 'Passwords não são correspondentes!');
+    }
+    if (strlen($_POST['novaPalavraPasse']) > 20  strlen($_POST['novaPalavraPasse']) < 5  strlen($_POST['RepetirNovaPalavraPasse']) > 20 || strlen($_POST['RepetirNovaPalavraPasse']) < 5) {
+        array_push($errors, 'Password must be between 5 and 20 characters long!');
+    }
+
+}
+*/
 ?>

@@ -6,7 +6,7 @@
 
             <div class="outro">
                 <h1>Registe-se já!</h1>
-                <strong><a href="#" class="myButton">Registo</a></strong>
+                <strong><a href="registo.php" class="myButton">Registo</a></strong>
             </div>
         </div>
     </div>

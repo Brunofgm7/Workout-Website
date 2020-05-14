@@ -13,36 +13,51 @@ if(isset($_SESSION['username'])){
 <body>
 <script src="js/app.js"></script>
 
-    <div class="content login">
-        <h2>Login</h2> 
+    <div class="contentLogin">
+    <table>
+        <thead>
+            <h2>Login</h2>
+        </thead> 
+        <tr>        
+            <?php include('errors.php'); ?>
+            <form action="login.php" method="post">
+            <td>
+                <label for="username">Username</label>
+            </td>
+            <td>
+                <input type="text" name="username" placeholder="Username" value="" id="username">
+            </td> 
+        </tr>
+        <tr>
+            <td>
+                <label for="password">Password</label>
+            </td>
+            <td>
+                <input type="password" placeholder="Password" name="password" id="password">
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <button type="submit" name="login" class="enviar">Login</button>
+            </td>
+        </tr>
+        </form>
+    </table>
+        <div>
+            <p> Ainda não tem conta? <a href="registo.php"><b>Fazer Registo</b></a></p>
+            <p> Esqueceu-se da palavra-passe? <a href="recuperar.php"><b>Recuperar Password</b></a></p>
+        </div>
         <?php 
         if(empty($_GET)):
         elseif($_GET['status'] == 'success'):
             echo 'Foi enviado um email de confirmação!';
         elseif($_GET['status'] == 'activated'):
             echo 'Conta ativada com sucesso!';
+        elseif($_GET['status'] == 'pass'):
+            echo 'Pedido de recuperação de palavra-passe enviado!';
+        elseif($_GET['status'] == 'novapass'):
+            echo 'Palavra-passe alterada com sucesso!';
         endif;
         ?> 
-        <form action="login.php" method="post">
-            <?php include('errors.php'); ?>
-            <br>
-            <br>
-
-            <label for="username">Username</label>
-            <input type="text" name="username" placeholder="Username" value="" id="username">
-            <br>
-            <br>
-
-            <label for="password">Password</label>
-            <input type="password" placeholder="Password" name="password" id="password">
-            <br>
-            <br>
-
-            <button type="submit" name="login">Login</button>
-        </form>
-
-        <div>
-            <p> Ainda não tem conta? <a href="registo.php"><b>Fazer Registo</b></a></p>
-        </div>
     </div>
 </body>

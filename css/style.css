@@ -33,7 +33,18 @@ div p {
 .container img {
     padding-top: 4%;
 }
-
+.contentPerfil{
+    padding-top: 3%;
+}
+.contentLogin{
+    padding-top: 4%;
+}
+.contentPass{
+    padding-top: 4%;
+}
+.contentRecuperar{
+    padding-top: 4%;
+}
 .container .texto {
    padding-left: 10%;
 }
@@ -59,12 +70,12 @@ body .treinos {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     margin:auto;
 }
-.polaroid2 {
-    width: 60%;
-    /*background-color: blue;*/
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    margin:auto;
+
+.polaroid img {
+    padding-top:0;
 }
+
+
 .nada {
     background-color: white;
 }
@@ -129,11 +140,31 @@ body .treinos {
     }
     body {
         overflow-x: hidden;
-    }    
+    }
+    .polaroid img {
+        padding-top:0;
+    }
+       
 }
 
 @media screen and (max-width:1400px){
     .container img {
+        padding-top: 8%;
+    }
+
+    .contentPerfil{
+        padding-top: 8%;
+    }
+    .polaroid img {
+        padding-top:0;
+    }
+    .contentLogin{
+        padding-top: 8%;
+    }
+    .contentPass{
+        padding-top: 8%;
+    }
+    .contentRecuperar{
         padding-top: 8%;
     }
 }
@@ -143,6 +174,18 @@ html, body {
   }
 @media screen and (max-width:768px){
     .container img {
+        padding-top: 12%;
+    }
+    .contentPerfil{
+        padding-top: 12%;
+    }
+    .contentLogin{
+        padding-top: 12%;
+    }
+    .contentPass{
+        padding-top: 12%;
+    }
+    .contentRecuperar{
         padding-top: 12%;
     }
     body {
@@ -167,6 +210,9 @@ html, body {
     .burger {
         display: block;
     }
+    .polaroid img {
+        padding-top:0;
+    }
 }
 
 .nav-active {
@@ -176,6 +222,21 @@ html, body {
 @media screen and (max-width:550px){
     .container img {
         padding-top: 20%;
+    }
+    .contentPerfil{
+        padding-top: 20%;
+    }
+    .contentLogin{
+        padding-top: 20%;
+    }
+    .contentPass{
+        padding-top: 20%;
+    }
+    .contentRecuperar{
+        padding-top: 20%;
+    }
+    .polaroid img {
+        padding-top:0;
     }
 }
 
@@ -263,13 +324,13 @@ html, body {
   }
   
   /*PA METER TEXTO NAS IMAGENS*/
-  .text {
-    background-color: rgb(219, 217, 217);
-    color: #660000;
-    font-size: 20px;
-    font-style: 'Poppins';
-    padding: 25px 50px;
-    width: 100%;
+  .text {   
+    background-color: rgb(219, 217, 217);   
+    color: #660000; 
+    font-size: 2vw; 
+    font-style: 'Poppins';  
+    padding: 2vw 2vw;   
+    width: 100%;    
   }
 
   .texto_exe {
@@ -347,6 +408,7 @@ html, body {
     bottom:0px;
     text-align: center;
     width:100%;
+    height:auto;
     background-color: rgb(35, 35, 35);
 }
 
@@ -357,9 +419,101 @@ html, body {
     margin-left:5em;
 }
 
-/* Dias */
 
-table {
+
+/* PAGINA REGISTO */
+.registo_form{
+    background-color: white;
+    font-family: 'poppins';
+    padding-top: 5%;
+    text-align: center;
+    width: 80%;
+    height: auto;
+    display: block;
+    margin:auto;
+}
+
+.registo_form * {
+    background-color: white;
+    text-align: center;
+    
+}
+.registo_form input:focus {
+    border: 3px solid #555;
+  }
+  .registo_form input {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: 3px solid #ccc;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+    outline: none;
+  }
+.registo_form h2 {
+    color:rgb(35, 35, 35);
+    font-weight: bold;
+   
+    margin:auto;
+    font-size: 30px;
+    font-family:'poppins';
+}
+.registo_form thead{
+    height:auto;
+}
+.registo_form button {
+    margin:auto;
+}   
+
+.registo_form input{
+    padding:12px 20px;
+    margin: 8px 0;
+    /* display:inline-block; */
+    box-sizing: border-box;
+    width:25vw;
+    border-radius: 4px;
+}
+.registo_form label {
+    letter-spacing: 3px;
+    font-size: 20px;
+    font-family:'poppins';
+    font-weight: bold;
+}
+        
+.registo_form ::placeholder{
+    font-family:'poppins';
+    letter-spacing: 3px;
+    color:rgb(39, 39, 39);
+}
+     
+/* INICIO BOTAO REGISTAR */
+.registar {
+    background-color:#d7dae0;
+    border-radius:16px;
+    border:1px solid #000000;
+    display:inline-block;
+    cursor:pointer;
+    color:#000000;
+    font-family:'poppins';
+    font-size:15px;
+    font-weight:bold;
+    padding:9px 14px;
+    text-decoration:none;
+    text-shadow:0px 0px 0px #777d76;
+    letter-spacing: 0.5px;
+}
+.registar:hover {
+    background-color:#fafafa;
+}
+.registar:active {
+    position:relative;
+    top:1px;
+}
+
+/* FIM BOTAO REGISTAR */
+
+.registo_form table {
     border: 1px solid #ccc;
     border-collapse: collapse;
     margin: 0;
@@ -368,39 +522,39 @@ table {
     table-layout: fixed;
 }
 
-table caption {
+.registo_form table caption {
 font-size: 1.5em;
 margin: .5em 0 .75em;
 }
 
-table tr {
+.registo_form table tr {
 background-color: #f8f8f8;
 border: 1px solid #ddd;
 padding: .35em;
 }
 
-table th,
-table td {
+.registo_form table th,
+.registo_form table td {
 padding: .625em;
 text-align: center;
 }
 
-table th {
+.registo_form table th {
 font-size: .85em;
 letter-spacing: .1em;
 text-transform: uppercase;
 }
 
 @media screen and (max-width: 600px) {
-    table {
+    .registo_form table {
         border: 0;
     }
 
-    table caption {
+    .registo_form table caption {
         font-size: 1.3em;
     }
 
-    table thead {
+    .registo_form table thead {
         border: none;
         clip: rect(0 0 0 0);
         height: 1px;
@@ -411,20 +565,20 @@ text-transform: uppercase;
         width: 1px;
     }
 
-    table tr {
+    .registo_form table tr {
         border-bottom: 3px solid #ddd;
         display: block;
         margin-bottom: .625em;
     }
 
-    table td {
+    .registo_form table td {
         border-bottom: 1px solid #ddd;
         display: block;
         font-size: .8em;
         text-align: right;
     }
 
-    table td::before {
+    .registo_form table td::before {
         /* aria-label has no advantage, it won't be read inside a table
         content: attr(aria-label);
         */
@@ -434,11 +588,692 @@ text-transform: uppercase;
         text-transform: uppercase;
     }
 
-    table td:last-child {
+    .registo_form table td:last-child {
         border-bottom: 0;
     }
 }
 
 
+
+
+/* Dias */
+.contentPerfil{
+    background-color: white;
+    font-family: 'poppins';
+    padding-top: 5%;
+    text-align: center;
+    width: 80%;
+    height: auto;
+    display: block;
+    margin:auto;
+}
+
+
+.contentPerfil * {
+    background-color: white;
+    text-align: center;
+    
+}
+.contentPerfil input:focus {
+    border: 3px solid #555;
+}
+
+.contentPerfil input {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: 3px solid #ccc;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+    outline: none;
+}
+
+.contentPerfil h2 {
+    color:rgb(35, 35, 35);
+    font-weight: bold;
+   
+    margin:auto;
+    font-size: 30px;
+    font-family:'poppins';
+}
+
+.contentPerfil table {
+    border: 1px solid #ccc;
+    border-collapse: collapse;
+    margin: 0;
+    padding: 0;
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    table-layout: fixed;
+}
+
+.contentPerfil table caption {
+font-size: 1.5em;
+margin: .5em 0 .75em;
+}
+
+.contentPerfil table tr {
+background-color: #f8f8f8;
+border: 1px solid #ddd;
+
+}
+
+.contentPerfil table th,
+.contentPerfil table td {
+padding: .625em;
+text-align: center;
+}
+
+.contentPerfil table th {
+font-size: .85em;
+letter-spacing: .1em;
+text-transform: uppercase;
+}
+
+
+.contentPerfil .enviar {
+    background-color:#d7dae0;
+    border-radius:16px;
+    border:1px solid #000000;
+    display:inline-block;
+    cursor:pointer;
+    color:#000000;
+    font-family:'poppins';
+    font-size:15px;
+    font-weight:bold;
+    padding:9px 14px;
+    text-decoration:none;
+    text-shadow:0px 0px 0px #777d76;
+    letter-spacing: 0.5px;
+}
+.contentPerfil .enviar:hover {
+    background-color:#fafafa;
+}
+.contentPerfil .enviar:active {
+    position:relative;
+    top:1px;
+}
+
+@media screen and (max-width: 600px) {
+    .contentPerfil table {
+        border: 0;
+        width: 100%;
+    }
+
+    .contentPerfil table caption {
+        font-size: 1.3em;
+    }
+
+    .contentPerfil table thead {
+        border: none;
+        clip: rect(0 0 0 0);
+        height: 1px;
+        margin: -1px;
+        overflow: hidden;
+        padding: 0;
+        position: absolute;
+        width: 1px;
+    }
+
+    .contentPerfil table tr {
+        
+        display: block;
+        margin-bottom: .625em;
+    }
+
+    .contentPerfil table td {
+        border-bottom: 1px solid #ddd;
+        display: block;
+        font-size: .8em;
+        text-align: right;
+    }
+
+    .contentPerfil table td::before {
+        /* aria-label has no advantage, it won't be read inside a table
+        content: attr(aria-label);
+        */
+        content: attr(data-label);
+        float: left;
+        font-weight: bold;
+        text-transform: uppercase;
+    }
+
+    .contentPerfil table td:last-child {
+        border-bottom: 0;
+    }
+}
+
+
+/* LOGIN CSS */
+
+.contentLogin{
+    background-color: white;
+    font-family: 'poppins';
+    text-align: center;
+    width: 80%;
+    height: auto;
+    display: block;
+    margin:auto;
+}
+
+
+.contentLogin * {
+    background-color: white;
+    text-align: center;
+    
+}
+.contentLogin input:focus {
+    border: 3px solid #555;
+}
+
+.contentLogin input {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: 3px solid #ccc;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+    outline: none;
+}
+
+.contentLogin h2 {
+    color:rgb(35, 35, 35);
+    font-weight: bold;
+   
+    margin:auto;
+    font-size: 30px;
+    font-family:'poppins';
+}
+
+.contentLogin table {
+    border: 1px solid #ccc;
+    border-collapse: collapse;
+    margin: 0;
+    padding: 0;
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    table-layout: fixed;
+}
+
+.contentLogin table caption {
+font-size: 1.5em;
+margin: .5em 0 .75em;
+}
+
+.contentLogin table tr {
+background-color: #f8f8f8;
+border: 1px solid #ddd;
+
+}
+
+.contentLogin table th,
+.contentLogin table td {
+padding: .625em;
+text-align: center;
+}
+
+.contentLogin table th {
+font-size: .85em;
+letter-spacing: .1em;
+text-transform: uppercase;
+}
+
+
+.contentLogin .enviar {
+    background-color:#d7dae0;
+    border-radius:16px;
+    border:1px solid #000000;
+    display:inline-block;
+    cursor:pointer;
+    color:#000000;
+    font-family:'poppins';
+    font-size:15px;
+    font-weight:bold;
+    padding:9px 14px;
+    text-decoration:none;
+    text-shadow:0px 0px 0px #777d76;
+    letter-spacing: 0.5px;
+}
+.contentLogin .enviar:hover {
+    background-color:#fafafa;
+}
+.contentLogin .enviar:active {
+    position:relative;
+    top:1px;
+}
+
+
+@media screen and (max-width: 600px) {
+    .contentLogin table {
+        border: 0;
+        width: 100%;
+    }
+
+    .contentLogin table caption {
+        font-size: 1.3em;
+    }
+
+    .contentLogin table thead {
+        border: none;
+        clip: rect(0 0 0 0);
+        height: 1px;
+        margin: -1px;
+        overflow: hidden;
+        padding: 0;
+        position: absolute;
+        width: 1px;
+    }
+
+    .contentLogin table tr {
+        
+        display: block;
+        margin-bottom: .625em;
+    }
+
+    .contentLogin table td {
+        border-bottom: 1px solid #ddd;
+        display: block;
+        font-size: .8em;
+        text-align: right;
+    }
+
+    .contentLogin table td::before {
+        /* aria-label has no advantage, it won't be read inside a table
+        content: attr(aria-label);
+        */
+        content: attr(data-label);
+        float: left;
+        font-weight: bold;
+        text-transform: uppercase;
+    }
+
+    .contentLogin table td:last-child {
+        border-bottom: 0;
+    }
+}
+/* Recuperar Pass CSS */
+.contentRecuperar{
+    background-color: white;
+    font-family: 'poppins';
+    padding-top: 5%;
+    text-align: center;
+    width: 80%;
+    height: auto;
+    display: block;
+    margin:auto;
+}
+
+
+.contentRecuperar * {
+    background-color: white;
+    text-align: center;
+    
+}
+.contentRecuperar input:focus {
+    border: 3px solid #555;
+}
+
+.contentRecuperar input {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: 3px solid #ccc;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+    outline: none;
+}
+
+.contentRecuperar h2 {
+    color:rgb(35, 35, 35);
+    font-weight: bold;
+   
+    margin:auto;
+    font-size: 30px;
+    font-family:'poppins';
+}
+
+.contentRecuperar table {
+    border: 1px solid #ccc;
+    border-collapse: collapse;
+    margin: 0;
+    padding: 0;
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    table-layout: fixed;
+}
+
+.contentRecuperar table caption {
+font-size: 1.5em;
+margin: .5em 0 .75em;
+}
+
+.contentRecuperar table tr {
+background-color: #f8f8f8;
+border: 1px solid #ddd;
+
+}
+
+.contentRecuperar table th,
+.contentRecuperar table td {
+padding: .625em;
+text-align: center;
+}
+
+.contentRecuperar table th {
+font-size: .85em;
+letter-spacing: .1em;
+text-transform: uppercase;
+}
+
+
+.contentRecuperar .enviar {
+    background-color:#d7dae0;
+    border-radius:16px;
+    border:1px solid #000000;
+    display:inline-block;
+    cursor:pointer;
+    color:#000000;
+    font-family:'poppins';
+    font-size:15px;
+    font-weight:bold;
+    padding:9px 14px;
+    text-decoration:none;
+    text-shadow:0px 0px 0px #777d76;
+    letter-spacing: 0.5px;
+}
+.contentRecuperar .enviar:hover {
+    background-color:#fafafa;
+}
+.contentRecuperar .enviar:active {
+    position:relative;
+    top:1px;
+}
+
+@media screen and (max-width: 600px) {
+    .contentRecuperar table {
+        border: 0;
+        width: 100%;
+    }
+
+    .contentRecuperar table caption {
+        font-size: 1.3em;
+    }
+
+    .contentRecuperar table thead {
+        border: none;
+        clip: rect(0 0 0 0);
+        height: 1px;
+        margin: -1px;
+        overflow: hidden;
+        padding: 0;
+        position: absolute;
+        width: 1px;
+    }
+
+    .contentRecuperar table tr {
+        
+        display: block;
+        margin-bottom: .625em;
+    }
+
+    .contentRecuperar table td {
+        border-bottom: 1px solid #ddd;
+        display: block;
+        font-size: .8em;
+        text-align: right;
+    }
+
+    .contentRecuperar table td::before {
+        /* aria-label has no advantage, it won't be read inside a table
+        content: attr(aria-label);
+        */
+        content: attr(data-label);
+        float: left;
+        font-weight: bold;
+        text-transform: uppercase;
+    }
+
+    .contentRecuperar table td:last-child {
+        border-bottom: 0;
+    }
+}
+
+/* MUDAR PASS CSS */
+
+.contentPass{
+    background-color: white;
+    font-family: 'poppins';
+    text-align: center;
+    width: 80%;
+    height: auto;
+    display: block;
+    margin:auto;
+}
+
+
+.contentPass * {
+    background-color: white;
+    text-align: center;
+    
+}
+.contentPass input:focus {
+    border: 3px solid #555;
+}
+
+.contentPass input {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: 3px solid #ccc;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+    outline: none;
+}
+
+.contentPass h2 {
+    color:rgb(35, 35, 35);
+    font-weight: bold;
+   
+    margin:auto;
+    font-size: 30px;
+    font-family:'poppins';
+}
+
+.contentPass table {
+    border: 1px solid #ccc;
+    border-collapse: collapse;
+    margin: 0;
+    padding: 0;
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    table-layout: fixed;
+}
+
+.contentPass table caption {
+font-size: 1.5em;
+margin: .5em 0 .75em;
+}
+
+.contentPass table tr {
+background-color: #f8f8f8;
+border: 1px solid #ddd;
+
+}
+
+.contentPass table th,
+.contentPass table td {
+padding: .625em;
+text-align: center;
+}
+
+.contentPass table th {
+font-size: .85em;
+letter-spacing: .1em;
+text-transform: uppercase;
+}
+
+
+.contentPass .enviar {
+    background-color:#d7dae0;
+    border-radius:16px;
+    border:1px solid #000000;
+    display:inline-block;
+    cursor:pointer;
+    color:#000000;
+    font-family:'poppins';
+    font-size:15px;
+    font-weight:bold;
+    padding:9px 14px;
+    text-decoration:none;
+    text-shadow:0px 0px 0px #777d76;
+    letter-spacing: 0.5px;
+}
+.contentPass .enviar:hover {
+    background-color:#fafafa;
+}
+.contentPass .enviar:active {
+    position:relative;
+    top:1px;
+}
+
+
+@media screen and (max-width: 600px) {
+    .contentPass table {
+        border: 0;
+        width: 100%;
+    }
+
+    .contentPass table caption {
+        font-size: 1.3em;
+    }
+
+    .contentPass table thead {
+        border: none;
+        clip: rect(0 0 0 0);
+        height: 1px;
+        margin: -1px;
+        overflow: hidden;
+        padding: 0;
+        position: absolute;
+        width: 1px;
+    }
+
+    .contentPass table tr {
+        
+        display: block;
+        margin-bottom: .625em;
+    }
+
+    .contentPass table td {
+        border-bottom: 1px solid #ddd;
+        display: block;
+        font-size: .8em;
+        text-align: right;
+    }
+
+    .contentPass table td::before {
+        /* aria-label has no advantage, it won't be read inside a table
+        content: attr(aria-label);
+        */
+        content: attr(data-label);
+        float: left;
+        font-weight: bold;
+        text-transform: uppercase;
+    }
+
+    .contentPass table td:last-child {
+        border-bottom: 0;
+    }
+}
+
+
+
+.image-upload > input
+{
+    display: none;
+}
+
+.image-upload img
+{
+    width: 200px;
+    height: 200px;
+    cursor: pointer;
+}
+
+.image-upload{
+    width: 200px;
+    height: 200px;
+    margin: auto;
+}
+
+.image-upload:hover .futilizador{
+    opacity: 0.3;
+}
+
+
+.image-upload .label {
+  position: relative;
+  top: -14%;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  color: #FF0000;
+
+  
+
+  opacity: 0;
+}
+
+.image-upload:hover .label {
+
+  opacity: 1;
+}
+
+input[type=text] {
+    baorder: 0;
+  
+}
+
+
 /* Bruno */
 
+
+
+input [type="date"]{
+    font-size: 20px;
+    font-family:'poppins';
+
+    appearance: none;
+    -webkit-appearance: none;
+    padding:5px;
+}
+input[type="date"] {
+    appearance: none;
+    -webkit-appearance: none;
+    color: #95a5a6;
+    font-family: "Helvetica", arial, sans-serif;
+    font-size: 18px;
+    border: 3px solid #ccc;
+
+    padding:5px;
+    display: inline-block !important;
+    visibility: visible !important;
+}
+.registo_form td p a{
+    text-decoration: none;
+    color: rgb(231, 2, 2);
+    font-family:'poppins'; 
+}
+.registo_form td p a:hover{
+    text-decoration: none;
+    color: rgb(131, 1, 1);
+    font-family:'poppins'; 
+}
