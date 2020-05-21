@@ -75,5 +75,5 @@ if(!empty($_POST))
 
 
 
-header('Location: http://localhost/workout-website/perfil.php');
+header('Location: perfil.php');
 ?>
