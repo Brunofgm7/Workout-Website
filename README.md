@@ -1,6 +1,6 @@
 # Workout-Website
 
-This project was developed for a class.
+This project was developed for the class "Programação Web" during the course of "Informática" at University of ISMAI.
 
 ## Getting Started
 
