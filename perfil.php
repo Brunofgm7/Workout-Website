@@ -1,8 +1,12 @@
 <?php
 
+//In your "php.ini" file, search for the file_uploads directive, and set it to On:
+//file_uploads = On
+
 include 'database.php';
 include 'server.php';
 include "cabecalho.php";
+//include "upload.php";
 
 $msg="";
 //testar base de dados, recebe do link
@@ -11,30 +15,13 @@ if(isset($_SESSION["username"]))
 {
 //verificar se o formulário foi submetido 
   
-    if(!empty($_POST))
-    {
-
-        $id=isset($_POST["id"]) && !empty($_POST["id"]) && $_POST["id"]!='auto'? $_POST["id"]:NULL;
-        $nome=isset($_POST["nome"])?$_POST["nome"]:'';
-        $dataNasc=isset($_POST["dataNasc"])?$_POST["dataNasc"]:'';
-        $email=isset($_POST["email"])?$_POST["email"]:'';
-        $username=isset($_POST["username"])?$_POST["username"]:'';
-        $password=isset($_POST["password"])?$_POST["password"]:'';
-        $tipo=isset($_POST["tipoUtilizador"])?$_POST["tipoUtilizador"]:'';
-        //$foto=isset($_POST["foto"])?$_POST["foto"]:'';
-        //$foto=$utilizador['foto'];
-        $genero=isset($_POST["genero"])?$_POST["genero"]:'';
     
-        //criar o update na base de dados
-        $smt=$pdo->prepare('UPDATE utilizadores SET id=?, nome=?,dataNasc=?,email=?,username=?,password=?,tipoUtilizador=?,genero=? WHERE username=?');
-        $smt->execute([$id,$nome,$dataNasc,$email,$username,$password,$tipo,$genero,$_SESSION["username"]]);
-        $msg="Registo alterado com sucesso";
-    }
     //retirar os valores da base de dados associados ao nosso identificador
     $smt=$pdo->prepare('SELECT * FROM utilizadores WHERE username=?');
     $smt->execute([$_SESSION["username"]]);
     $utilizador=$smt->fetch(PDO::FETCH_ASSOC);
     //se nao existir contacto com este ID
+
 if(!$utilizador)
 {
     exit("utlizador inexistente.");
@@ -49,15 +36,28 @@ exit ("utilizador não definido.");
 ?>
 <script src="js/app.js"></script>
 
-<div class="content perfil">
-    <form action="perfil.php?>" method="post">
+<div class="contentPerfil">
+    <form action="upload.php" method="post" enctype="multipart/form-data">
         <table>
-            <caption>O meu perfil</caption>
+            <thead>
+                <h2>O meu perfil</h2> 
+            </thead>
             <tbody>
                 <tr>
                     <td colspan="2">
-                        <img src="<?=$utilizador['foto']?>" id="foto" name="foto" value="<?=$utilizador['foto']?>">
+                        <div class="image-upload">
+                            <label for="fileToUpload"  class="futilizador">
+                                <img src="<?=$utilizador['foto']?>"/>
+                            </label>
+                            <p class="label">Alterar Foto</p>
+                            <input type="file" id="fileToUpload" name="fileToUpload" />
+                            <input type="hidden" name="foto" id="foto" value="<?=$utilizador['foto']?>">
+                            
+                        </div>
+                        
+                        
                     </td>
+                    
                 </tr>
                 <tr>
                     <td>
@@ -117,7 +117,7 @@ exit ("utilizador não definido.");
                 </tr>
                 <tr>
                     <td colspan="2">
-                        <input type="submit" value="Guardar">
+                        <input type="submit" value="Guardar" class="enviar">
                     </td>
                 </tr>
             </tbody>
