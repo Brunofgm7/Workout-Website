@@ -27,3 +27,12 @@ About the code:
 - "upload.php" has the code to change the the profile photo, and all the execptions.
 - "validacaoPass.php" has the code when a user forgets the password and ask for the recovery it, its goes to this page and can redefine it.
 - "verificacao.php" has the code to set the account activated in database.
+
+About the folders:
+- "css" has the css of the pages.
+- "fotos" this is where the photos are stored when you change your profile picture.
+- "img" has the photos used in the website.
+- "js" has the js code used in the website.
+- "PHPmailer" has the stuff you need to send emails.
+
+
