@@ -23,7 +23,7 @@ To start using this code you only need XAMPP.
 
 ## About the code
 
-- "index.php" is the home page.
+- [index.php] is the home page.
 - "cabecalho.php" is the navbar, and is used in several pages.
 - "database.php" has the connections to the database.
 - "errors.php" is invoked when the pages has an error.
