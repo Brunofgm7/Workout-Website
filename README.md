@@ -16,7 +16,7 @@ For now was only tested in localhost.
 To start using this code you only need XAMPP.
 
 
-.[About it](https://github.com/xampp-phoenix/xampp/blob/master/README.md)
+[About it](https://github.com/xampp-phoenix/xampp/blob/master/README.md)
 
 
 ### About the code
