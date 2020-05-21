@@ -14,6 +14,8 @@ About the code:
 - "footer.php" has the footer of the page, only used in the homepage.
 - "functions.php" never used, old file.
 - "login.php" is the login page.
+- "meustreinos.php" we are still working on it.
+- "mudarPass.php" has the form to change the password when logged in (knowing the current password).
 - "perfil.php" is the profile page.
 - "registo.php" is the page to register in the website.
 - "server.php" 
@@ -22,4 +24,6 @@ About the code:
   - Has the function to logout.
   - Has the code to code to recover the lost password.
   - Has the code to change the password knowing the current password.
- -"verificacao.php" has the code to set the account activated in database.
+- "upload.php" has the code to change the the profile photo, and all the execptions.
+- "validacaoPass.php" has the code when a user forgets the password and ask for the recovery it, its goes to this page and can redefine it.
+- "verificacao.php" has the code to set the account activated in database.
