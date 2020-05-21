@@ -10,7 +10,7 @@
 <body>
 <script src="js/app.js"></script>
 
-    <div>
+    <div >
         <h2>Nova palavra-passe</h2> 
         <form action="validacaoPass.php" method="post">
             <?php include('errors.php'); ?>
