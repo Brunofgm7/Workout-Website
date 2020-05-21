@@ -19,7 +19,7 @@ To start using this code you only need XAMPP.
 [About it](https://github.com/xampp-phoenix/xampp/blob/master/README.md)
 
 
-### About the code
+## About the code
 
 - "index.php" is the home page.
 - "cabecalho.php" is the navbar, and is used in several pages.
@@ -42,7 +42,7 @@ To start using this code you only need XAMPP.
 - "validacaoPass.php" has the code when a user forgets the password and ask for the recovery it, its goes to this page and can redefine it.
 - "verificacao.php" has the code to set the account activated in database.
 
-### About the folders:
+## About the folders:
 - "css" has the css of the pages.
 - "fotos" this is where the photos are stored when you change your profile picture.
 - "img" has the photos used in the website.
