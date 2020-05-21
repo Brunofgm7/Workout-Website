@@ -1,11 +1,25 @@
 # Workout-Website
 
+This project was developed for a class.
+
+## Getting Started
+
 To start using this code you need to import the database to your phpmyadmin.
 
 1. Create a database with the name "workout". Upload the file "workout(2).sql" and it creates all the tables you need.
 2. Unzip PHPmailer.zip and place it in the root of your folder.
 
-About the code:
+For now was only tested in localhost.
+
+### Prerequisites
+
+To start using this code you only need XAMPP.
+
+```
+About it: https://github.com/xampp-phoenix/xampp/blob/master/README.md
+```
+
+### About the code
 
 - "index.php" is the home page.
 - "cabecalho.php" is the navbar, and is used in several pages.
@@ -34,5 +48,22 @@ About the folders:
 - "img" has the photos used in the website.
 - "js" has the js code used in the website.
 - "PHPmailer" has the stuff you need to send emails.
+
+## Built With
+
+* [PHP](https://www.php.net/)
+* [XAMPP](https://www.apachefriends.org/index.html)
+* [Code](https://code.visualstudio.com/)
+
+
+## Versioning
+
+1.3
+
+## Authors
+
+* **Bruno Moreira** 
+* **Leonardo Oliveira** 
+* **Nuno Dias** 
 
 
