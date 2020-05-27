@@ -186,7 +186,7 @@ if(isset($_POST['recuperar'])) {
 
             $mail->IsHTML(true);
             
-            $mail->Subject = "Recuperação Palavra-passe";
+            $mail->Subject = "Recuperacao Palavra-passe";
             
             $mensagem = "<strong>$nomee</strong>,<br />
                         Foi enviado um pedido de recuperação de senha.
@@ -196,7 +196,7 @@ if(isset($_POST['recuperar'])) {
                         <b>Esta e uma mensagem automatica, por favor nao responda!</b>";
 
             $corpo_email = "<html><head><style>p{font-family:Arial;font-size:12px}</style></head><body>$mensagem</body>";
-            $mail->SetFrom("workoutsiteES@gmail.com","Recuperação Palavra-passe");
+            $mail->SetFrom("workoutsiteES@gmail.com","Recuperacao Palavra-passe");
             $mail->AddAddress($emaill);
             
             $mail->Body=$corpo_email;
