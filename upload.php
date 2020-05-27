@@ -76,4 +76,6 @@ if(!empty($_POST))
 
 
 header('Location: perfil.php');
+
 ?>
+
