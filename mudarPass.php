@@ -1,7 +1,12 @@
 <?php
+include 'cabecalho.php';
     include ('server.php');
     $db = mysqli_connect('localhost','root','','workout');
+    
 
+    
+    
+    
 ?>
 
 
@@ -20,7 +25,7 @@
                     <label for="PasswordAtual">Palavra-passe atual</label>
                 </td>
                 <td>
-                    <input type="password" name="PasswordAtual" placeholder="Inserir nova palavra-passe" value="" id="PasswordAtual">
+                    <input class="input2" type="text" name="PasswordAtual" placeholder="Inserir nova palavra-passe" value="" id="PasswordAtual">
                 </td>
             </tr>
             <tr>
@@ -28,7 +33,7 @@
                     <label for="NovaPassword">Nova palavra-passe</label>
                 </td>
                 <td>
-                    <input type="password" name="NovaPassword" placeholder="Inserir nova palavra-passe" value="" id="NovaPassword">
+                    <input class="input2" type="text" name="NovaPassword" placeholder="Inserir nova palavra-passe" value="" id="NovaPassword">
                 </td>
             </tr>
             <tr>
@@ -36,7 +41,7 @@
                     <label for="RepetirNovaPassword">Repetir nova palavra-passe</label>
                 </td>
                 <td>
-                    <input type="password" name="RepetirNovaPassword" placeholder="Repetir nova palavra-passe" value="" id="RepetirNovaPassword">
+                    <input class="input2" type="text" name="RepetirNovaPassword" placeholder="Repetir nova palavra-passe" value="" id="RepetirNovaPassword">
                 </td>
             </tr>
             <tr>
