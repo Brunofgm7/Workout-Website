@@ -9,6 +9,10 @@
 .bodyIndex {
   background-color: #660000;
 }
+.contentMeusTreinos{
+  padding-top: 4%;
+  display: inline;
+}
 
 nav {
   display: flex;
@@ -43,7 +47,7 @@ div p {
   padding-top: 5%;
 }
 .contentPass {
-  padding-top: 4%;
+  padding-top: 6%;
 }
 .contentRecuperar {
   padding-top: 4%;
