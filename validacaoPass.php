@@ -4,15 +4,17 @@
     
     $key=$_GET['key'];
 
+    $_SESSION["key"]=$key;
+
 ?>
 
 
 <body>
 <script src="js/app.js"></script>
 
-    <div >
+    <div>
         <h2>Nova palavra-passe</h2> 
-        <form action="validacaoPass.php" method="post">
+        <form action="validacaoPass.php?key=<?=$_SESSION['key']?>" method="post">
             <?php include('errors.php'); ?>
             <br>
             <br>

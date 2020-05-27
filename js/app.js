@@ -36,6 +36,7 @@ const navSlide = () => {
 
 navSlide();
 
+
 // SE TIVER MTAS FUNCOES
 // const app = () =>{
 //     navSlide();

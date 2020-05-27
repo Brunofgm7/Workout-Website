@@ -16,7 +16,7 @@
             <div><a href="index.php"><img src="img\workout_ico.png"></a></div>
         </div> 
         <ul class="nav-links">
-            <li><a href="#" >Os Meus Treinos</a></li>
+            <li><a href="meustreinos.php" >Os Meus Treinos</a></li>
             <li><a href="perfil.php">Perfil</a></li>
             <li><a href="index.php?logout" style="color:red";>Logout</a></li>
         </ul>';

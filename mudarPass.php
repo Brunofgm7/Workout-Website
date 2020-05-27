@@ -25,7 +25,7 @@ include 'cabecalho.php';
                     <label for="PasswordAtual">Palavra-passe atual</label>
                 </td>
                 <td>
-                    <input class="input3" type="text" name="PasswordAtual" placeholder="Inserir nova palavra-passe" value="" id="PasswordAtual">
+                    <input class="input2" type="text" name="PasswordAtual" placeholder="Inserir nova palavra-passe" value="" id="PasswordAtual">
                 </td>
             </tr>
             <tr>
@@ -33,7 +33,7 @@ include 'cabecalho.php';
                     <label for="NovaPassword">Nova palavra-passe</label>
                 </td>
                 <td>
-                    <input class="input3" type="text" name="NovaPassword" placeholder="Inserir nova palavra-passe" value="" id="NovaPassword">
+                    <input class="input2" type="text" name="NovaPassword" placeholder="Inserir nova palavra-passe" value="" id="NovaPassword">
                 </td>
             </tr>
             <tr>
@@ -41,7 +41,7 @@ include 'cabecalho.php';
                     <label for="RepetirNovaPassword">Repetir nova palavra-passe</label>
                 </td>
                 <td>
-                    <input class="input3" type="text" name="RepetirNovaPassword" placeholder="Repetir nova palavra-passe" value="" id="RepetirNovaPassword">
+                    <input class="input2" type="text" name="RepetirNovaPassword" placeholder="Repetir nova palavra-passe" value="" id="RepetirNovaPassword">
                 </td>
             </tr>
             <tr>
