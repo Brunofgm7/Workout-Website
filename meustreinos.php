@@ -25,10 +25,19 @@ if (isset($_SESSION["username"])) {
 <script src="js/app.js"></script>
 
 <div class="contentMeusTreinos">
-    <div class="meusTreinosLeft">
-        <p>Treinos Criados</p>
-    </div>
-    <div class="meusTreinosRight">
-        <p>Treino #</p>
-    </div>
+    <table>
+        <thead>
+            <h2>Meus Treinos</h2> 
+        </thead>
+        <tr>
+            <td>
+                <div class="meusTreinosLeft">
+                    <p>Treinos Criados</p>
+                </div>
+                <div class="meusTreinosRight">
+                    <p>Treino #</p>
+                </div>
+            </td>
+        </tr>
+    </table>
 </div>

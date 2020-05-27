@@ -9,10 +9,7 @@
 .bodyIndex {
   background-color: #660000;
 }
-.contentMeusTreinos{
-  padding-top: 4%;
-  display: inline;
-}
+
 
 nav {
   display: flex;
@@ -53,7 +50,7 @@ div p {
   padding-top: 4%;
 }
 .contentMeusTreinos {
-  padding-top: 4%;
+  padding-top: 6%;
 }
 .container .texto {
   padding-left: 10%;
@@ -1217,7 +1214,22 @@ body {
   background-color: white;
   display: table-cell;
 }
+.contentMeusTreinos h2 {
+  color: rgb(35, 35, 35);
+  font-weight: bold;
+  text-align: center;
+  margin: auto;
+  font-size: 30px;
+  font-family: "poppins";
+}
 
+.contentMeusTreinos table {
+  padding-top:2%;
+  width:100%;
+}
+.contentMeusTreinos table td{
+  height:auto;
+}
 /* Bruno */
 
 input [type="date"] {
