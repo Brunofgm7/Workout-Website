@@ -27,7 +27,7 @@
             <input type="text" name="RepetirNovaPalavraPasse" placeholder="Repetir nova palavra-passe" value="" id="RepetirNovaPalavraPasse">
             <br>
             <br>
-            <button type="submit" name="validacaoPass">Guardar nova palavra-passe</button>
+            <button type="submit" name="validacaoPass">Guardar nova coisa</button>
         </form>
     </div>
 </body>
