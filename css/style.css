@@ -416,6 +416,7 @@ body {
   margin-left: 5em;
 }
 
+
 /* PAGINA REGISTO */
 .registo_form {
   background-color: white;
@@ -472,13 +473,48 @@ body {
   font-weight: bold;
 }
 
-.registo_form ::placeholder {
+.registo_form::placeholder {
   font-family: "poppins";
   letter-spacing: 3px;
   color: rgb(39, 39, 39);
 }
+.registo_form table{
+  margin:auto;
+}
+/*INICIO BOTAO REGISTAR */
+/**/
+.registo_form table {
+  border: 1px solid #ccc;
+  border-collapse: collapse;
+  margin: 0;
+  padding-top: 2%;
+  width: 100%;
+  table-layout: fixed;
+}
 
-/* INICIO BOTAO REGISTAR */
+.registo_form table caption {
+  font-size: 1.5em;
+  margin: 0.5em 0 0.75em;
+}
+
+.registo_form table tr {
+  background-color: #f8f8f8;
+  border: 1px solid #ddd;
+  padding: 0.35em;
+}
+
+.registo_form table th,
+.registo_form table td {
+  padding: 0.625em;
+  text-align: center;
+}
+
+.registo_form table th {
+  font-size: 0.85em;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+/**/
 .registar {
   background-color: #d7dae0;
   border-radius: 16px;
