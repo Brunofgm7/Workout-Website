@@ -73,7 +73,7 @@ exit ("utilizador não definido.");
                         <label for="nome">Nome</label>
                     </td>
                     <td>
-                        <input type="text" name="nome" placeholder="Nome" value="<?=$utilizador['nome']?>" id="nome">
+                        <input class="input3" type="text" name="nome" placeholder="Nome" value="<?=$utilizador['nome']?>" id="nome">
                     </td>
                 </tr>
                 <tr>
@@ -81,7 +81,7 @@ exit ("utilizador não definido.");
                         <label for="email">Email</label>
                     </td>
                     <td>
-                        <input type="text" name="email" placeholder="Email" value="<?=$utilizador['email']?>" id="email">
+                        <input  class="input3" type="text" name="email" placeholder="Email" value="<?=$utilizador['email']?>" id="email">
                     </td>
                 </tr>
                 <tr>
@@ -121,7 +121,7 @@ exit ("utilizador não definido.");
                         <label for="dataNasc">Data de Nascimento</label>
                     </td>
                     <td>
-                        <input type="date" id="dataNasc" name="dataNasc" value="<?=$utilizador['dataNasc']?>">
+                        <input class="input3" type="date" id="dataNasc" name="dataNasc" value="<?=$utilizador['dataNasc']?>">
                         <script src="js/today.js"></script>
                     </td>
                 </tr>
