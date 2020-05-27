@@ -512,33 +512,33 @@ body {
 
 /* FIM BOTAO REGISTAR */
 
-.registo_form table {
+.validacaoPass table {
   border: 1px solid #ccc;
   border-collapse: collapse;
   margin: 0;
-  padding: 0;
+  padding-top: 2%;
   width: 100%;
   table-layout: fixed;
 }
 
-.registo_form table caption {
+.validacaoPass table caption {
   font-size: 1.5em;
   margin: 0.5em 0 0.75em;
 }
 
-.registo_form table tr {
+.validacaoPass table tr {
   background-color: #f8f8f8;
   border: 1px solid #ddd;
   padding: 0.35em;
 }
 
-.registo_form table th,
-.registo_form table td {
+.validacaoPass table th,
+.validacaoPass table td {
   padding: 0.625em;
   text-align: center;
 }
 
-.registo_form table th {
+.validacaoPass table th {
   font-size: 0.85em;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -550,15 +550,15 @@ body {
     padding-top: 22%;
   }
   
-  .registo_form table {
+  .validacaoPass table {
     border: 0;
   }
 
-  .registo_form table caption {
+  .validacaoPass table caption {
     font-size: 1.3em;
   }
 
-  .registo_form table thead {
+  .validacaoPass table thead {
     border: none;
     clip: rect(0 0 0 0);
     height: 1px;
@@ -569,19 +569,19 @@ body {
     width: 1px;
   }
 
-  .registo_form table tr {
+  .validacaoPass table tr {
     border-bottom: 3px solid #ddd;
     display: block;
     margin-bottom: 0.625em;
   }
 
-  .registo_form table td {
+  .validacaoPass table td {
     border-bottom: 1px solid #ddd;
     display: block;
     font-size: 0.8em;
   }
 
-  .registo_form table td::before {
+  .validacaoPass table td::before {
     /* aria-label has no advantage, it won't be read inside a table
       content: attr(aria-label);
       */
@@ -591,11 +591,68 @@ body {
     text-transform: uppercase;
   }
 
-  .registo_form table td:last-child {
+  .validacaoPass table td:last-child {
     border-bottom: 0;
   }
 }
+.validacaoPass {
+  background-color: white;
+  font-family: "poppins";
+  padding-top: 5%;
+  text-align: center;
+  width: 80%;
+  height: auto;
+  display: block;
+  margin: auto;
+}
 
+.validacaoPass * {
+  background-color: white;
+  text-align: center;
+}
+.validacaoPass .input2:focus {
+  border: 3px solid #555;
+}
+.validacaoPass .input2 {
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: 3px solid #ccc;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  outline: none;
+  width: 25vw;
+  border-radius: 4px;
+}
+
+
+.validacaoPass h2 {
+  color: rgb(35, 35, 35);
+  font-weight: bold;
+
+  margin: auto;
+  font-size: 30px;
+  font-family: "poppins";
+}
+.validacaoPass thead {
+  height: auto;
+}
+.validacaoPass button {
+  margin: auto;
+}
+
+.validacaoPass label {
+  letter-spacing: 3px;
+  font-size: 20px;
+  font-family: "poppins";
+  font-weight: bold;
+}
+
+.validacaoPass ::placeholder {
+  font-family: "poppins";
+  letter-spacing: 3px;
+  color: rgb(39, 39, 39);
+}
 /* Dias */
 .contentPerfil {
   background-color: white;
@@ -691,6 +748,30 @@ body {
   top: 1px;
 }
 
+/*inicio validar*/
+.validacaoPass .validar {
+  background-color: #d7dae0;
+  border-radius: 16px;
+  border: 1px solid #000000;
+  display: inline-block;
+  cursor: pointer;
+  color: #000000;
+  font-family: "poppins";
+  font-size: 15px;
+  font-weight: bold;
+  padding: 9px 14px;
+  text-decoration: none;
+  text-shadow: 0px 0px 0px #777d76;
+  letter-spacing: 0.5px;
+}
+.validacaoPass .validar:hover {
+  background-color: #fafafa;
+}
+.validacaoPass .validar:active {
+  position: relative;
+  top: 1px;
+}
+/*fim validar*/
 @media screen and (max-width: 600px) {
   .contentPerfil table {
     border: 0;
