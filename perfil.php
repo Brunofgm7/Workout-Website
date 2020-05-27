@@ -89,30 +89,40 @@ exit ("utilizador não definido.");
                         <label for="password">Password</label>
                     </td>
                     <td>
-                        <input type="password" name="password" placeholder="Password" value="<?=$utilizador['password']?>" id="password">
+                        <form action="mudarPass.php">
+                            <button onclick="location.href='mudarPass.php'" class="enviar" type="button">MUDAR A PASS</button>
+                        </form>
                     </td>
                 </tr>
                     <tr>
-                        <td colspan="2">
+                        
                             <?php
                             if($utilizador['genero'] == 'm')
                             {
-                                echo '<input type="radio" name="genero" id="genero" value="m" checked="checked"> Masculino';
-                                echo '<input type="radio" name="genero" id="genero" value="f"> Feminino'; 
-                            }
-                            else {
-                                echo '<input type="radio" name="genero" id="genero" value="m"> Masculino';
-                                echo '<input type="radio" name="genero" id="genero" value="f" checked="checked"> Feminino';
+                                echo '<td>';
+                                    echo '<input type="radio" name="genero" id="genero" value="m" checked="checked"> Masculino';
+                                echo '</td>';
+                                echo '<td>';
+                                    echo '<input type="radio" name="genero" id="genero" value="f"> Feminino'; 
+                                echo '</td>';
+                            }else {     
+                                echo '<td>';                      
+                                    echo '<input type="radio" name="genero" id="genero" value="m"> Masculino';
+                                echo '</td>';
+                                echo '<td>';
+                                    echo '<input type="radio" name="genero" id="genero" value="f" checked="checked"> Feminino';
+                                echo '</td>';
                             }
                             ?>
-                    </td>
-                </tr>
+                        
+                    </tr>
                 <tr>
                     <td>
                         <label for="dataNasc">Data de Nascimento</label>
                     </td>
                     <td>
                         <input type="date" id="dataNasc" name="dataNasc" value="<?=$utilizador['dataNasc']?>">
+                        <script src="js/today.js"></script>
                     </td>
                 </tr>
                 <tr>
@@ -124,6 +134,3 @@ exit ("utilizador não definido.");
         </table>
     </form>
 </div>
-<?php if($msg):?>
-    <p><?=$msg?></p>
-<?php endif;?>

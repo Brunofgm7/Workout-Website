@@ -17,10 +17,10 @@
                 <form action="mudarPass.php" method="post">
                 <?php include('errors.php'); ?>
                 <td>
-                    <label for="PalavraPasseAtual">Palavra-passe atual</label>
+                    <label for="PasswordAtual">Palavra-passe atual</label>
                 </td>
                 <td>
-                    <input type="text" name="PalavraPasseAtual" placeholder="Inserir nova palavra-passe" value="" id="PalavraPasseAtual">
+                    <input type="password" name="PasswordAtual" placeholder="Inserir nova palavra-passe" value="" id="PasswordAtual">
                 </td>
             </tr>
             <tr>
@@ -28,7 +28,7 @@
                     <label for="NovaPassword">Nova palavra-passe</label>
                 </td>
                 <td>
-                    <input type="text" name="NovaPassword" placeholder="Inserir nova palavra-passe" value="" id="NovaPassword">
+                    <input type="password" name="NovaPassword" placeholder="Inserir nova palavra-passe" value="" id="NovaPassword">
                 </td>
             </tr>
             <tr>
@@ -36,7 +36,7 @@
                     <label for="RepetirNovaPassword">Repetir nova palavra-passe</label>
                 </td>
                 <td>
-                    <input type="text" name="RepetirNovaPassword" placeholder="Repetir nova palavra-passe" value="" id="RepetirNovaPassword">
+                    <input type="password" name="RepetirNovaPassword" placeholder="Repetir nova palavra-passe" value="" id="RepetirNovaPassword">
                 </td>
             </tr>
             <tr>
