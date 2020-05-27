@@ -192,7 +192,7 @@ if(isset($_POST['recuperar'])) {
                         Foi enviado um pedido de recuperação de senha.
                         Para recuperar a palavra-passe, clique no link abaixo.<br />
                         <a href ='http://localhost/workout-website/validacaoPass.php?key=$key2'>Recuperar palavra-passe</a><br />
-                        Se não pediu para recuperar a palavra-passe, ignore esta mensagem.<br />
+                        Se não pediu para recuperar a palavra-passe, ignore esta mensagem e altere a mensagem o mais rápido possível.<br />
                         <b>Esta e uma mensagem automatica, por favor nao responda!</b>";
 
             $corpo_email = "<html><head><style>p{font-family:Arial;font-size:12px}</style></head><body>$mensagem</body>";
