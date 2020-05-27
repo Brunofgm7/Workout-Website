@@ -1262,3 +1262,15 @@ input[type="date"] {
   color: rgb(131, 1, 1);
   font-family: "poppins";
 }
+
+.login_text p a {
+  text-decoration: none;
+  color: rgb(231, 2, 2);
+  font-family: "poppins";
+}
+
+.login_text p a:hover {
+  text-decoration: none;
+  color: rgb(131, 1, 1);
+  font-family: "poppins";
+}
