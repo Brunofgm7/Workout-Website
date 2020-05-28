@@ -1,14 +1,11 @@
 <?php
-include 'cabecalho.php';
-    include ('server.php');
-    $db = mysqli_connect('localhost','root','','workout');
-    
 
-    
-    
-    
+include 'database.php';
+include 'server.php';
+include "cabecalho.php";
+$db = mysqli_connect('localhost','root','','workout');
+
 ?>
-
 
 <body>
 <script src="js/app.js"></script>
@@ -25,7 +22,7 @@ include 'cabecalho.php';
                     <label for="PasswordAtual">Palavra-passe atual</label>
                 </td>
                 <td>
-                    <input class="input2" type="text" name="PasswordAtual" placeholder="Inserir nova palavra-passe" value="" id="PasswordAtual">
+                    <input class="input2" type="password" name="PasswordAtual" placeholder="Inserir nova palavra-passe" value="" id="PasswordAtual">
                 </td>
             </tr>
             <tr>
@@ -33,7 +30,7 @@ include 'cabecalho.php';
                     <label for="NovaPassword">Nova palavra-passe</label>
                 </td>
                 <td>
-                    <input class="input2" type="text" name="NovaPassword" placeholder="Inserir nova palavra-passe" value="" id="NovaPassword">
+                    <input class="input2" type="password" name="NovaPassword" placeholder="Inserir nova palavra-passe" value="" id="NovaPassword">
                 </td>
             </tr>
             <tr>
@@ -41,7 +38,7 @@ include 'cabecalho.php';
                     <label for="RepetirNovaPassword">Repetir nova palavra-passe</label>
                 </td>
                 <td>
-                    <input class="input2" type="text" name="RepetirNovaPassword" placeholder="Repetir nova palavra-passe" value="" id="RepetirNovaPassword">
+                    <input class="input2" type="password" name="RepetirNovaPassword" placeholder="Repetir nova palavra-passe" value="" id="RepetirNovaPassword">
                 </td>
             </tr>
             <tr>
