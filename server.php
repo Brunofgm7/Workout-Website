@@ -326,7 +326,7 @@ if ($_SESSION["certificado"]==1) {
 
             $mail->IsHTML(true);
 
-            $mail->Subject = "Receção de certificado";
+            $mail->Subject = "Rececao de certificado";
 
             $mensagem = "<strong>$nomee</strong>,<br />
                         Foi recebido o seu certificado para se tornar professor na nossa página.
