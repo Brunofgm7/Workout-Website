@@ -1485,9 +1485,30 @@ body {
   opacity: 1;
 }
 
+
+/* INICIO MEUS TREINOS */
+.material-icons {
+  width: 40px;
+  height:40px;
+  color:white;
+  
+}
+.meusTreinosLeft a {
+  font-size:1.5vw;
+  text-decoration: none;
+  font-family:'poppins';
+  /* color:rgb(155, 155, 155); */
+  color:white;
+}
 .contentMeusTreinos {
   width: 100%;
   display: table;
+}
+.meusTreinosLeft{
+  border: 1px solid red;
+}
+.meusTreinosRight{
+  border: 1px solid black;
 }
 
 .contentMeusTreinos .meusTreinosLeft {
@@ -1499,6 +1520,7 @@ body {
 }
 .contentMeusTreinos .meusTreinosRight {
   width: 60%;
+  padding-left: 3%;
   float: right;
   background-color: white;
   display: table-cell;
@@ -1519,6 +1541,14 @@ body {
 .contentMeusTreinos table td{
   height:auto;
 }
+/* FIM PAGINA MEUS TREINOS */
+
+
+
+
+
+
+
 /* Bruno */
 
 input [type="date"] {

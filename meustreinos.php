@@ -33,9 +33,14 @@ if (isset($_SESSION["username"])) {
             <td>
                 <div class="meusTreinosLeft">
                     <p>Treinos Criados</p>
+                    <div>
+                        <a href="#" ><i class="material-icons">add_circle</i></a>
+                        <!-- <a href="#"  style="margin:auto;border-top:0px;">Novo Treino</a> -->
+                    </div>
                 </div>
                 <div class="meusTreinosRight">
                     <p>Treino #</p>
+                    <a href="#"><i class="material-icons">add_circle</i></a>
                 </div>
             </td>
         </tr>
