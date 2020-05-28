@@ -290,4 +290,62 @@ if(isset($_POST['mudarPass'])) {
     }
 }
 
+
+if ($_SESSION["certificado"]==1) {
+    $userEmail = mysqli_real_escape_string($db, $_SESSION["email"]);
+
+    if (empty($userEmail)) {
+        array_push($errors, "Username/Email não está preenchido");
+    }
+    if (count($errors) == 0) {
+        $query = "SELECT * FROM utilizadores WHERE username = '$userEmail' OR email = '$userEmail'";
+        $result = mysqli_query($db, $query);
+        if (mysqli_num_rows($result) == 1) {
+
+            $smt = $pdo->prepare("SELECT * FROM utilizadores WHERE username = '$userEmail' OR email = '$userEmail'");
+            $smt->execute();
+            $utilizador = $smt->fetch();
+            $emaill = $utilizador['email'];
+            $nomee = $utilizador['nome'];
+
+            //enviar email de confirmação
+            require_once 'PHPMailer/class.phpmailer.php';
+
+            $mail = new PHPMailer();
+            $mail->IsSMTP();
+            $mail->SMTPSecure = "tls";
+            $mail->Host       = "smtp.gmail.com";
+            $mail->SMTPAuth = true;
+            $mail->Username = "workoutsiteES@gmail.com";
+            $mail->Password = "workoutsite";
+            $mail->Port       = 587;
+            $mail->Timeout = 120;
+            $mail->SMTPDebug = 0;
+
+            $mail->FromName = "Workout Website";
+
+            $mail->IsHTML(true);
+
+            $mail->Subject = "Receção de certificado";
+
+            $mensagem = "<strong>$nomee</strong>,<br />
+                        Foi recebido o seu certificado para se tornar professor na nossa página.
+                        Obrigado pela a sua candidatura, em breve ira ser contactado por nós para saber o resultado.
+                        Se não enviou certificado, ignore esta mensagem.<br />
+                        <b>Esta e uma mensagem automatica, por favor nao responda!</b>";
+
+            $corpo_email = "<html><head><style>p{font-family:Arial;font-size:12px}</style></head><body>$mensagem</body>";
+            $mail->SetFrom("workoutsiteES@gmail.com", "Receção de Certificado");
+            $mail->AddAddress($emaill);
+
+            $mail->Body = $corpo_email;
+            $mail->Send();
+
+        } else {
+            array_push($errors, "Username ou email não encontrado!");
+        }
+    }
+    $_SESSION["certificado"]=0;
+}
+
 ?>
