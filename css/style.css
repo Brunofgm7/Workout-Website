@@ -40,6 +40,9 @@ div p {
 .contentPerfil {
   padding-top: 7%;
 }
+.contentTProfessor {
+  padding-top: 5%;
+}
 .contentLogin {
   padding-top: 5%;
 }
@@ -164,6 +167,9 @@ div.con {
   .contentPerfil {
     padding-top: 10%;
   }
+  .contentTProfessor{
+    padding-top: 8%;
+  }
   .polaroid img {
     padding-top: 0;
   }
@@ -191,6 +197,9 @@ body {
     padding-top: 12%;
   }
   .contentPerfil {
+    padding-top: 12%;
+  }
+  .contentTProfessor{
     padding-top: 12%;
   }
   .contentLogin {
@@ -238,6 +247,9 @@ body {
     padding-top: 20%;
   }
   .contentPerfil {
+    padding-top: 20%;
+  }
+  .contentTProfessor{
     padding-top: 20%;
   }
   .contentLogin {
@@ -1287,6 +1299,153 @@ body {
   }
 
   .contentPass table td:last-child {
+    border-bottom: 0;
+  }
+}
+
+/* TORNAR COLABORADOR CSS */
+
+.contentTProfessor {
+  background-color: white;
+  font-family: "poppins";
+  text-align: center;
+  width: 80%;
+  height: auto;
+  display: block;
+  margin: auto;
+}
+
+.contentTProfessor * {
+  background-color: white;
+  text-align: center;
+}
+.contentTProfessor input:focus {
+  border: 3px solid #555;
+}
+
+.contentTProfessor input {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: 3px solid #ccc;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  outline: none;
+}
+.contentTProfessor input[type="file"]{
+  border: 0;
+}
+
+.contentTProfessor h2 {
+  color: rgb(35, 35, 35);
+  font-weight: bold;
+
+  margin: auto;
+  font-size: 30px;
+  font-family: "poppins";
+}
+
+.contentTProfessor table {
+  border: 1px solid #ccc;
+  border-collapse: collapse;
+  margin: 0;
+  padding: 0;
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+  table-layout: fixed;
+}
+
+.contentTProfessor table caption {
+  font-size: 1.5em;
+  margin: 0.5em 0 0.75em;
+}
+
+.contentTProfessor table tr {
+  background-color: #f8f8f8;
+  border: 1px solid #ddd;
+}
+
+.contentTProfessor table th,
+.contentTProfessor table td {
+  padding: 0.625em;
+  text-align: center;
+}
+
+.contentTProfessor table th {
+  font-size: 0.85em;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.contentTProfessor .enviar {
+  background-color: #d7dae0;
+  border-radius: 16px;
+  border: 1px solid #000000;
+  display: inline-block;
+  cursor: pointer;
+  color: #000000;
+  font-family: "poppins";
+  font-size: 15px;
+  font-weight: bold;
+  padding: 9px 14px;
+  text-decoration: none;
+  text-shadow: 0px 0px 0px #777d76;
+  letter-spacing: 0.5px;
+}
+.contentTProfessor .enviar:hover {
+  background-color: #fafafa;
+}
+.contentTProfessor .enviar:active {
+  position: relative;
+  top: 1px;
+}
+
+@media screen and (max-width: 600px) {
+  .contentTProfessor table {
+    border: 0;
+    width: 100%;
+  }
+
+  .contentTProfessor table caption {
+    font-size: 1.3em;
+  }
+
+  .contentTProfessor table thead {
+    border: none;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+  }
+
+  .contentTProfessor table tr {
+    display: block;
+    margin-bottom: 0.625em;
+  }
+
+  .contentTProfessor table td {
+    border-bottom: 1px solid #ddd;
+    display: block;
+    font-size: 0.8em;
+    text-align: right;
+  }
+
+  .contentTProfessor table td::before {
+    /* aria-label has no advantage, it won't be read inside a table
+      content: attr(aria-label);
+      */
+    content: attr(data-label);
+    float: left;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+
+  .contentTProfessor table td:last-child {
     border-bottom: 0;
   }
 }

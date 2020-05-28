@@ -1,7 +1,9 @@
 <?php
-
+$_SESSION["certificado"]=0;
+echo $_SESSION["certificado"];
 include "server.php";
 include "cabecalho.php";
+
 
 // se nao tiver logado nao consegue aceder a esta pagina
 // if (empty($_SESSION['username'])) {
