@@ -1,9 +1,11 @@
 <?php
-
 include 'database.php';
 include 'server.php';
 include "cabecalho.php";
 $db = mysqli_connect('localhost','root','','workout');
+
+
+    
 
 ?>
 
