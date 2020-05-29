@@ -18,7 +18,6 @@ if(isset($_SESSION["username"]))
     $utilizador=$smt->fetch(PDO::FETCH_ASSOC);
 
     $_SESSION["email"] = $utilizador['email'];
-    echo $_SESSION["email"];
     //se nao existir contacto com este ID
 
 if(!$utilizador)
