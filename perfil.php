@@ -6,7 +6,6 @@
 include 'database.php';
 include 'server.php';
 include "cabecalho.php";
-//include "upload.php";
 
 
 $msg="";

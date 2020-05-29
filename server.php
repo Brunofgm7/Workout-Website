@@ -1,6 +1,7 @@
 <?php 
 
 session_start();
+
 $username = "";
 $nome = "";
 $email = "";
@@ -131,13 +132,12 @@ if(isset($_POST['login'])) {
         $result = mysqli_query($db, $query);
         if(mysqli_num_rows($result) == 1) {
             $_SESSION['username'] = $username;
-
             $smt=$pdo->prepare('SELECT * FROM utilizadores WHERE username=?');
             $smt->execute([$_SESSION["username"]]);
             $utilizador=$smt->fetch(PDO::FETCH_ASSOC);
 
             $_SESSION['tipoUtilizador'] = $utilizador['tipoUtilizador'];
-            $_SESSION['success'] = "";            
+            $_SESSION['success'] = "";
             // redirecionar para a homepage
             header('location: index.php');
         } else {
@@ -305,7 +305,7 @@ if (isset($_SESSION["certificado"]) and $_SESSION["certificado"]==1) {
     if(count($errors) == 0) {
         $query = "SELECT * FROM utilizadores WHERE email = '$userEmail'";
         $result = mysqli_query($db, $query);
-        
+
         if(mysqli_num_rows($result) == 1) {
 
             $smt=$pdo->prepare("SELECT * FROM utilizadores WHERE email = '$userEmail'");
@@ -331,9 +331,11 @@ if (isset($_SESSION["certificado"]) and $_SESSION["certificado"]==1) {
             $mail->FromName="Workout Website";
 
             $mail->IsHTML(true);
+
             
             $mail->Subject = "Candidatura para professor";
             
+
             $mensagem = "<strong>$nomee</strong>,<br />
                         Foi recebido o seu certificado para se tornar professor na nossa página.
                         Obrigado pela a sua candidatura, em breve ira ser contactado por nós para saber o resultado.
@@ -438,7 +440,58 @@ if(isset($_POST['manageCandidatura'])) {
         $smt=$pdo->prepare('DELETE FROM certificado WHERE username=?');
         $smt->execute([$username]);
 
+if(isset($_POST['adicionarTreino'])) {
+    $nomeTreino = mysqli_real_escape_string($db, $_POST['nomeTreino']);
 
+    if(empty($nomeTreino)) {
+        array_push($errors, "Nome do treino não está preenchido");
+    }
+    if(count($errors) == 0) {
+        $user = $_SESSION['username'];
+
+        $query = "SELECT * FROM utilizadores WHERE username='$user'";
+        $result = mysqli_query($db, $query);         
+        
+        if(mysqli_num_rows($result) == 1) {
+            $sql = "INSERT INTO treinos (id_utilizador, titulo, dificuldade) VALUES ('$username','$nome','$email','$password_encriptada','$dataNasc',0,0,'$key','fotos/stock.jpg')";
+            mysqli_query($db,$sql);
+            header('location: adicionarExercicio.php');
+        } else {
+            array_push($errors, "Password atual não corresponde!");
+        }
+    }
+}
+
+if(isset($_POST['adicionarExercicio'])) {
+    $nomeExercicio = mysqli_real_escape_string($db, $_POST['nomeExercicio']);
+    $repeticoes = mysqli_real_escape_string($db, $_POST['repeticoes']);
+    $dificuldade = mysqli_real_escape_string($db, $_POST['dificuldade']);
+
+    if(empty($nomeExercicio)) {
+        array_push($errors, "Nome do exercicio não está preenchido");
+    }
+    if(empty($repeticoes)) {
+        array_push($errors, "Número de repetições não está preenchido");
+    }
+    if(empty($dificuldade)) {
+        array_push($errors, "Não escolheu nenhuma opção da dificuldade");
+    }
+    if(count($errors) == 0) {
+        $user = $_SESSION['username'];
+
+        $query = "SELECT * FROM utilizadores WHERE username='$user'";
+        $result = mysqli_query($db, $query);         
+        
+        if(mysqli_num_rows($result) == 1) {
+            $sql = "INSERT INTO treinos (username, nome, email, password, dataNasc,tipoUtilizador,contaAtivada,chave,foto) 
+            VALUES ('$username','$nome','$email','$password_encriptada','$dataNasc',0,0,'$key','fotos/stock.jpg')";
+            mysqli_query($db,$sql);
+            header('location: adicionarExercicio.php');
+        } else {
+            array_push($errors, "Password atual não corresponde!");
+        }
+    }
+}
 
         $userEmail = mysqli_real_escape_string($db, $_POST['email']);
     
