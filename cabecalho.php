@@ -12,7 +12,7 @@
 <body>
     <nav>
         <?php
-        if (isset($_SESSION['username'])) {
+        if (isset($_SESSION['username']) && $_SESSION['tipoUtilizador'] == 0) {
             echo
                 '<div class="logo">
             <div><a href="index.php"><img src="img\workout_ico.png"></a></div>
@@ -23,7 +23,20 @@
             <li><a href="tprofessor.php">Tornar Professor</a></li>
             <li><a href="index.php?logout" style="color:red";>Logout</a></li>
         </ul>';
-        } else {
+        }else if (isset($_SESSION['tipoUtilizador']) && $_SESSION['tipoUtilizador']==2) {
+            echo
+            '<div class="logo">
+            <div><a href="index.php"><img src="img\workout_ico.png"></a></div>
+        </div> 
+        <ul class="nav-links">
+            <li><a href="adminpage.php" >Página Admin</a></li>
+            <li><a href="meustreinos.php" >Os Meus Treinos</a></li>
+            <li><a href="perfil.php">Perfil</a></li>
+            <li><a href="index.php?logout" style="color:red";>Logout</a></li>
+        </ul>';
+        } 
+
+        else {
             echo
                 '<div class="logo">
         <div><a href="index.php"><img src="img\workout_ico.png"></a></div>
