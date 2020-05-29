@@ -291,26 +291,26 @@ if(isset($_POST['mudarPass'])) {
 }
 
 
-if ($_SESSION["certificado"]==1) {
-    $userEmail = mysqli_real_escape_string($db, $_SESSION["email"]);
-
-    if (empty($userEmail)) {
+if (isset($_SESSION["certificado"]) and $_SESSION["certificado"]==1) {
+    $userEmail = mysqli_real_escape_string($db, $_SESSION['email']);
+    
+    if(empty($userEmail)) {
         array_push($errors, "Username/Email não está preenchido");
     }
-    if (count($errors) == 0) {
-        $query = "SELECT * FROM utilizadores WHERE username = '$userEmail' OR email = '$userEmail'";
+    if(count($errors) == 0) {
+        $query = "SELECT * FROM utilizadores WHERE email = '$userEmail'";
         $result = mysqli_query($db, $query);
-        if (mysqli_num_rows($result) == 1) {
+        if(mysqli_num_rows($result) == 1) {
 
-            $smt = $pdo->prepare("SELECT * FROM utilizadores WHERE username = '$userEmail' OR email = '$userEmail'");
+            $smt=$pdo->prepare("SELECT * FROM utilizadores WHERE email = '$userEmail'");
             $smt->execute();
-            $utilizador = $smt->fetch();
+            $utilizador=$smt->fetch();
             $emaill = $utilizador['email'];
             $nomee = $utilizador['nome'];
 
             //enviar email de confirmação
             require_once 'PHPMailer/class.phpmailer.php';
-
+            
             $mail = new PHPMailer();
             $mail->IsSMTP();
             $mail->SMTPSecure = "tls";
@@ -319,14 +319,16 @@ if ($_SESSION["certificado"]==1) {
             $mail->Username = "workoutsiteES@gmail.com";
             $mail->Password = "workoutsite";
             $mail->Port       = 587;
-            $mail->Timeout = 120;
-            $mail->SMTPDebug = 0;
-
-            $mail->FromName = "Workout Website";
+            $mail->Timeout=120;
+            $mail->SMTPDebug=0;
+            
+            $mail->FromName="Workout Website";
 
             $mail->IsHTML(true);
 
-            $mail->Subject = "Rececao de certificado";
+            
+            $mail->Subject = "Candidatura para professor";
+            
 
             $mensagem = "<strong>$nomee</strong>,<br />
                         Foi recebido o seu certificado para se tornar professor na nossa página.
@@ -335,11 +337,15 @@ if ($_SESSION["certificado"]==1) {
                         <b>Esta e uma mensagem automatica, por favor nao responda!</b>";
 
             $corpo_email = "<html><head><style>p{font-family:Arial;font-size:12px}</style></head><body>$mensagem</body>";
-            $mail->SetFrom("workoutsiteES@gmail.com", "Receção de Certificado");
+            $mail->SetFrom("workoutsiteES@gmail.com","Candidatura para professor");
             $mail->AddAddress($emaill);
-
-            $mail->Body = $corpo_email;
+            
+            $mail->Body=$corpo_email;
             $mail->Send();
+
+            
+            
+            header('location: perfil.php');
 
         } else {
             array_push($errors, "Username ou email não encontrado!");
@@ -347,6 +353,7 @@ if ($_SESSION["certificado"]==1) {
     }
     $_SESSION["certificado"]=0;
 }
+
 
 
 if(isset($_POST['adicionarTreino'])) {

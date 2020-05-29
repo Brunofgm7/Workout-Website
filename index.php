@@ -1,9 +1,18 @@
 <?php
-$_SESSION["certificado"]=0;
-echo $_SESSION["certificado"];
+if(isset($_SESSION['certificado'])){
+}else{
+    $_SESSION['certificado'] = 0;
+}
+
+
 include "server.php";
+
 include "cabecalho.php";
 
+if(isset($_SESSION['tipoUtilizador'])){
+}else{
+    $_SESSION['tipoUtilizador'] = 0;
+}
 
 // se nao tiver logado nao consegue aceder a esta pagina
 // if (empty($_SESSION['username'])) {

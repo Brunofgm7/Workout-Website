@@ -23,7 +23,15 @@ if ($uploadOk == 0) {
     		$_SESSION["certificado"]=1;
 		}
 	}
-
+$email=isset($_POST["email"])?$_POST["email"]:'';
+$username=isset($_POST["username"])?$_POST["username"]:'';
+$certificado=$uploadOk==1?$target_dir."cand_".$_SESSION["username"]."_".$filename:'';
+$aprovado=0;
+    
+//criar o update na base de dados
+$smt=$pdo->prepare('INSERT INTO certificado (username,email,certificado,aprovado) VALUES (?,?,?,?)');
+$smt->execute([$username,$email,$certificado,$aprovado]);
+$msg="Registo alterado com sucesso";
 
 header('Location: perfil.php');
 

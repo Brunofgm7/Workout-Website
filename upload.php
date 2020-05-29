@@ -60,15 +60,14 @@ if(!empty($_POST))
         $email=isset($_POST["email"])?$_POST["email"]:'';
         $username=isset($_POST["username"])?$_POST["username"]:'';
         $password=isset($_POST["password"])?$_POST["password"]:'';
-        $tipo=isset($_POST["tipoUtilizador"])?$_POST["tipoUtilizador"]:'';
         //$foto=isset($_POST["foto"])?$_POST["foto"]:'';
         //$foto=$utilizador['foto'];
         $foto=$_FILES["fileToUpload"]["name"]!=""?"fotos/"."perfil_".$_SESSION["username"].".jpg":$_POST["foto"];
         $genero=isset($_POST["genero"])?$_POST["genero"]:'';
     
         //criar o update na base de dados
-        $smt=$pdo->prepare('UPDATE utilizadores SET  nome=?,dataNasc=?,email=?,username=?,password=?,tipoUtilizador=?,foto=?,genero=? WHERE username=?');
-        $smt->execute([$nome,$dataNasc,$email,$username,$password,$tipo,$foto,$genero,$_SESSION["username"]]);
+        $smt=$pdo->prepare('UPDATE utilizadores SET  nome=?,dataNasc=?,email=?,username=?,foto=?,genero=? WHERE username=?');
+        $smt->execute([$nome,$dataNasc,$email,$username,$foto,$genero,$_SESSION["username"]]);
         $msg="Registo alterado com sucesso";
         
 

@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 27-Maio-2020 às 23:22
+-- Tempo de geração: 29-Maio-2020 às 01:01
 -- Versão do servidor: 10.4.11-MariaDB
--- versão do PHP: 7.4.2
+-- versão do PHP: 7.4.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -21,6 +21,27 @@ SET time_zone = "+00:00";
 --
 -- Banco de dados: `workout`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `certificado`
+--
+
+CREATE TABLE `certificado` (
+  `id` int(11) NOT NULL,
+  `username` varchar(50) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `certificado` longtext NOT NULL,
+  `aprovado` tinyint(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Extraindo dados da tabela `certificado`
+--
+
+INSERT INTO `certificado` (`id`, `username`, `email`, `certificado`, `aprovado`) VALUES
+(8, 'dias', 'dragaonuno98@hotmail.com', 'candidaturas/cand_dias_eticket_3835-4245408_Catarina-Ribeiro.pdf', 0);
 
 -- --------------------------------------------------------
 
@@ -75,18 +96,13 @@ INSERT INTO `exerc_treinos` (`id_exerc`, `id_treinos`) VALUES
 --
 
 CREATE TABLE `treinos` (
-  `id_treinos` int(11) NOT NULL,
-  `nome` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Extraindo dados da tabela `treinos`
---
-
-INSERT INTO `treinos` (`id_treinos`, `nome`) VALUES
-(1, 'Segunda'),
-(2, 'Terça'),
-(3, 'Corrida');
+  `id` int(11) NOT NULL,
+  `id_utilizador` int(11) NOT NULL,
+  `titulo` varchar(50) NOT NULL,
+  `descricao` text NOT NULL,
+  `dificuldade` int(11) NOT NULL,
+  `imagens` text DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -113,33 +129,27 @@ CREATE TABLE `utilizadores` (
 --
 
 INSERT INTO `utilizadores` (`id`, `username`, `nome`, `email`, `password`, `dataNasc`, `tipoUtilizador`, `contaAtivada`, `chave`, `foto`, `genero`) VALUES
-(39, 'brunofgm7', 'bruno', 'bruno7moreira@gmail.com', '827ccb0eea8a706c4c34a16891f84e7b', '2020-05-03', 0, 1, 'e3f1e31fe6514c5de04995b7b04f0471', 'fotos/perfil_brunofgm7.jpg', 'f'),
-(44, 'dias', 'dias', 'dragaonuno98@hotmail.com', '827ccb0eea8a706c4c34a16891f84e7b', '2020-05-03', 0, 0, 'e14629297152fac1184da282533a9e00', 'fotos/stock.jpg', 'f'),
-(45, 'leo', 'leo', 'leonardo-t-oliveira@hotmail.com', '827ccb0eea8a706c4c34a16891f84e7b', '2020-05-27', 0, 1, 'caaccf93e8def9296f858dd4616caf01', 'fotos/stock.jpg', NULL),
-(47, 'bruno', 'bruno', 'dadsa@gmail.com', '', '2020-05-03', 0, 0, '4de1c9c7b0a1516945bf075bcf95540f', 'fotos/stock.jpg', 'm');
+(39, 'brunofgm7', 'bruno', 'bruno7moreira@gmail.com', '4297f44b13955235245b2497399d7a93', '2020-05-03', 0, 1, 'e3f1e31fe6514c5de04995b7b04f0471', 'fotos/stock.jpg', NULL),
+(45, 'leo', 'leo', 'leonardo-t-oliveira@hotmail.com', 'e10adc3949ba59abbe56e057f20f883e', '2020-05-27', 0, 1, 'caaccf93e8def9296f858dd4616caf01', 'fotos/stock.jpg', NULL),
+(48, 'TheWarriorPT', 'Nuno2', 'dragaonuno98@hotmail.com', '827ccb0eea8a706c4c34a16891f84e7b', '2020-05-01', 2, 0, '75532a3011ffb24f2fa628c0226e56e2', 'fotos/stock.jpg', 'f'),
+(49, 'dias', 'Nuno', 'dragaonuno98@hotmail.com', '827ccb0eea8a706c4c34a16891f84e7b', '2020-05-07', 0, 0, 'fa15b4b5f9b7bf89bb9d3a2f19236203', 'fotos/stock.jpg', NULL);
 
 --
 -- Índices para tabelas despejadas
 --
 
 --
--- Índices para tabela `exercicios`
+-- Índices para tabela `certificado`
 --
-ALTER TABLE `exercicios`
-  ADD PRIMARY KEY (`id_exerc`);
-
---
--- Índices para tabela `exerc_treinos`
---
-ALTER TABLE `exerc_treinos`
-  ADD KEY `id_exerc` (`id_exerc`),
-  ADD KEY `id_treinos` (`id_treinos`);
+ALTER TABLE `certificado`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Índices para tabela `treinos`
 --
 ALTER TABLE `treinos`
-  ADD PRIMARY KEY (`id_treinos`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `id_utilizador` (`id_utilizador`);
 
 --
 -- Índices para tabela `utilizadores`
@@ -154,33 +164,32 @@ ALTER TABLE `utilizadores`
 --
 
 --
--- AUTO_INCREMENT de tabela `exercicios`
+-- AUTO_INCREMENT de tabela `certificado`
 --
-ALTER TABLE `exercicios`
-  MODIFY `id_exerc` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+ALTER TABLE `certificado`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT de tabela `treinos`
 --
 ALTER TABLE `treinos`
-  MODIFY `id_treinos` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de tabela `utilizadores`
 --
 ALTER TABLE `utilizadores`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
 
 --
 -- Restrições para despejos de tabelas
 --
 
 --
--- Limitadores para a tabela `exerc_treinos`
+-- Limitadores para a tabela `treinos`
 --
-ALTER TABLE `exerc_treinos`
-  ADD CONSTRAINT `exerc_treinos_ibfk_1` FOREIGN KEY (`id_exerc`) REFERENCES `exercicios` (`id_exerc`),
-  ADD CONSTRAINT `exerc_treinos_ibfk_2` FOREIGN KEY (`id_treinos`) REFERENCES `treinos` (`id_treinos`);
+ALTER TABLE `treinos`
+  ADD CONSTRAINT `treinos_ibfk_1` FOREIGN KEY (`id_utilizador`) REFERENCES `utilizadores` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
