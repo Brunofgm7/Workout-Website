@@ -7,6 +7,11 @@ include 'database.php';
 include 'server.php';
 include "cabecalho.php";
 //include "upload.php";
+if(isset($_SESSION["PUTA"])){
+    echo $_SESSION["PUTA"];
+}else{
+    echo "NOT OKAY";
+}
 
 $msg="";
 //testar base de dados, recebe do link

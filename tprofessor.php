@@ -18,6 +18,7 @@ if(isset($_SESSION["username"]))
     $utilizador=$smt->fetch(PDO::FETCH_ASSOC);
 
     $_SESSION["email"] = $utilizador['email'];
+    echo $_SESSION["email"];
     //se nao existir contacto com este ID
 
 if(!$utilizador)
@@ -47,15 +48,6 @@ exit ("utilizador não definido.");
                     <td>
                         <label for="user"><?=$utilizador['username']?></label>
                         <input type="hidden" name="username" placeholder="Username" value="<?=$utilizador['username']?>" id="username">
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <label for="nome">Nome</label>
-                    </td>
-                    <td>
-                    	<label for="user"><?=$utilizador['nome']?></label>
-                        <input type="hidden" name="nome" placeholder="Nome" value="<?=$utilizador['nome']?>" id="nome">
                     </td>
                 </tr>
                 <tr>
