@@ -348,4 +348,58 @@ if ($_SESSION["certificado"]==1) {
     $_SESSION["certificado"]=0;
 }
 
+
+if(isset($_POST['adicionarTreino'])) {
+    $nomeTreino = mysqli_real_escape_string($db, $_POST['nomeTreino']);
+
+    if(empty($nomeTreino)) {
+        array_push($errors, "Nome do treino não está preenchido");
+    }
+    if(count($errors) == 0) {
+        $user = $_SESSION['username'];
+
+        $query = "SELECT * FROM utilizadores WHERE username='$user'";
+        $result = mysqli_query($db, $query);         
+        
+        if(mysqli_num_rows($result) == 1) {
+            $sql = "INSERT INTO treinos (id_utilizador, titulo, dificuldade) VALUES ('$username','$nome','$email','$password_encriptada','$dataNasc',0,0,'$key','fotos/stock.jpg')";
+            mysqli_query($db,$sql);
+            header('location: adicionarExercicio.php');
+        } else {
+            array_push($errors, "Password atual não corresponde!");
+        }
+    }
+}
+
+if(isset($_POST['adicionarExercicio'])) {
+    $nomeExercicio = mysqli_real_escape_string($db, $_POST['nomeExercicio']);
+    $repeticoes = mysqli_real_escape_string($db, $_POST['repeticoes']);
+    $dificuldade = mysqli_real_escape_string($db, $_POST['dificuldade']); 
+
+    if(empty($nomeTreino)) {
+        array_push($errors, "Nome do exercicio não está preenchido");
+    }
+    if(empty($repeticoes)) {
+        array_push($errors, "Número de repetições não está preenchido");
+    }
+    if(empty($dificuldade)) {
+        array_push($errors, "Não escolheu nenhuma opção da dificuldade");
+    }
+    if(count($errors) == 0) {
+        $user = $_SESSION['username'];
+
+        $query = "SELECT * FROM utilizadores WHERE username='$user'";
+        $result = mysqli_query($db, $query);         
+        
+        if(mysqli_num_rows($result) == 1) {
+            $sql = "INSERT INTO treinos (username, nome, email, password, dataNasc,tipoUtilizador,contaAtivada,chave,foto) 
+            VALUES ('$username','$nome','$email','$password_encriptada','$dataNasc',0,0,'$key','fotos/stock.jpg')";
+            mysqli_query($db,$sql);
+            header('location: adicionarExercicio.php');
+        } else {
+            array_push($errors, "Password atual não corresponde!");
+        }
+    }
+}
+
 ?>
