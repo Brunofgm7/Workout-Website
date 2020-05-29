@@ -132,6 +132,11 @@ if(isset($_POST['login'])) {
         $result = mysqli_query($db, $query);
         if(mysqli_num_rows($result) == 1) {
             $_SESSION['username'] = $username;
+            $smt=$pdo->prepare('SELECT * FROM utilizadores WHERE username=?');
+            $smt->execute([$_SESSION["username"]]);
+            $utilizador=$smt->fetch(PDO::FETCH_ASSOC);
+
+            $_SESSION['tipoUtilizador'] = $utilizador['tipoUtilizador'];
             $_SESSION['success'] = "";
             // redirecionar para a homepage
             header('location: index.php');
@@ -381,9 +386,9 @@ if(isset($_POST['adicionarTreino'])) {
 if(isset($_POST['adicionarExercicio'])) {
     $nomeExercicio = mysqli_real_escape_string($db, $_POST['nomeExercicio']);
     $repeticoes = mysqli_real_escape_string($db, $_POST['repeticoes']);
-    $dificuldade = mysqli_real_escape_string($db, $_POST['dificuldade']); 
+    $dificuldade = mysqli_real_escape_string($db, $_POST['dificuldade']);
 
-    if(empty($nomeTreino)) {
+    if(empty($nomeExercicio)) {
         array_push($errors, "Nome do exercicio não está preenchido");
     }
     if(empty($repeticoes)) {

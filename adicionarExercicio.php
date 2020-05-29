@@ -39,17 +39,17 @@ $db = mysqli_connect('localhost','root','','workout');
                     <label for="dificuldade">Dificuldade</label>
                 </td>
                 <td>
-                    <input type="radio" id="facil" name="facil" value="facil">
+                    <input type="radio" id="dificuldade" name="dificuldade" value="facil" checked>
                         <label for="facil">Fácil</label>
                     </div>
 
                     <div>
-                    <input type="radio" id="medio" name="medio" value="medio">
+                    <input type="radio" id="dificuldade" name="dificuldade" value="medio">
                         <label for="medio">Médio</label>
                     </div>
 
                     <div>
-                    <input type="radio" id="dificil" name="dificil" value="dificil">
+                    <input type="radio" id="dificuldade" name="dificuldade" value="dificil">
                         <label for="dificil">Difícil</label>
                     </td>
                 </tr>
