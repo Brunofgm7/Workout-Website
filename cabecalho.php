@@ -3,10 +3,11 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title><?php $title ?></title>
     <link href="css/style.css" type="text/css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
+    <title>Workout Website</title>
+    <link rel="shortcut icon" href="img/Weightlift.ico" />
 </head>
 
 <body>
@@ -23,7 +24,20 @@
             <li><a href="tprofessor.php">Tornar Professor</a></li>
             <li><a href="index.php?logout" style="color:red";>Logout</a></li>
         </ul>';
-        }else if (isset($_SESSION['tipoUtilizador']) && $_SESSION['tipoUtilizador']==2) {
+        }else if (isset($_SESSION['tipoUtilizador']) && $_SESSION['tipoUtilizador']==1) {
+            echo
+            '<div class="logo">
+            <div><a href="index.php"><img src="img\workout_ico.png"></a></div>
+        </div> 
+        <ul class="nav-links">
+            <li><a href="meustreinos.php" >Os Meus Treinos</a></li>
+            <li><a href="perfil.php">Perfil</a></li>
+            <li><a href="index.php?logout" style="color:red";>Logout</a></li>
+        </ul>';
+        }
+
+
+        else if (isset($_SESSION['tipoUtilizador']) && $_SESSION['tipoUtilizador']==2) {
             echo
             '<div class="logo">
             <div><a href="index.php"><img src="img\workout_ico.png"></a></div>

@@ -53,6 +53,9 @@ div p {
   padding-top: 10%;
 }
 .contentMeusTreinos {
+  padding-top: 5%;
+}
+.contentAdminPage {
   padding-top: 6%;
 }
 .container .texto {
@@ -185,7 +188,12 @@ div.con {
   .contentRecuperar {
     padding-top: 16%;
   }
-  
+  .contentMeusTreinos {
+    padding-top: 9%;
+  }
+  .contentAdminPage {
+    padding-top: 8%;
+  }
 }
 
 html,
@@ -210,6 +218,12 @@ body {
   }
   .contentRecuperar {
     padding-top: 12%;
+  }
+  .contentMeusTreinos {
+    padding-top: 12%;
+  }
+  .contentAdminPage {
+    padding-top: 14%;
   }
   body {
     overflow-x: hidden;
@@ -260,6 +274,12 @@ body {
   }
   .contentRecuperar {
     padding-top: 10%;
+  }
+  .contentMeusTreinos {
+    padding-top: 20%;
+  }
+  .contentAdminPage {
+    padding-top: 22%;
   }
   .polaroid img {
     padding-top: 0;
@@ -1564,3 +1584,147 @@ input[type="date"] {
   font-family: "poppins";
 }
 
+/* CSS PARA ADMIN PAGE */
+
+.contentAdminPage {
+  background-color: white;
+  font-family: "poppins";
+  text-align: center;
+  width: 80%;
+  height: auto;
+  display: block;
+  margin: auto;
+}
+
+.contentAdminPage * {
+  background-color: white;
+  text-align: center;
+}
+.contentAdminPage input:focus {
+  border: 3px solid #555;
+}
+
+.contentAdminPage .input2 {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: 3px solid #ccc;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  outline: none;
+  border-radius: 4px;
+}
+
+.contentAdminPage h2 {
+  color: rgb(35, 35, 35);
+  font-weight: bold;
+
+  margin: auto;
+  font-size: 30px;
+  font-family: "poppins";
+}
+
+.contentAdminPage table {
+  border: 1px solid #ccc;
+  border-collapse: collapse;
+  margin: 0;
+  padding: 0;
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+  table-layout: fixed;
+}
+
+.contentAdminPage table caption {
+  font-size: 1.5em;
+  margin: 0.5em 0 0.75em;
+}
+
+.contentAdminPage table tr {
+  background-color: #f8f8f8;
+  border: 1px solid #ddd;
+}
+
+.contentAdminPage table th,
+.contentAdminPage table td {
+  padding: 0.625em;
+  text-align: center;
+}
+
+.contentAdminPage table th {
+  font-size: 0.85em;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.contentAdminPage .enviar {
+  background-color: #d7dae0;
+  border-radius: 16px;
+  border: 1px solid #000000;
+  display: inline-block;
+  cursor: pointer;
+  color: #000000;
+  font-family: "poppins";
+  font-size: 15px;
+  font-weight: bold;
+  padding: 9px 14px;
+  text-decoration: none;
+  text-shadow: 0px 0px 0px #777d76;
+  letter-spacing: 0.5px;
+}
+.contentAdminPage .enviar:hover {
+  background-color: #fafafa;
+}
+.contentAdminPage .enviar:active {
+  position: relative;
+  top: 1px;
+}
+
+
+@media screen and (max-width: 1200px) {
+  .contentAdminPage table {
+    border: 0;
+    width: 100%;
+  }
+
+  .contentAdminPage table caption {
+    font-size: 1.3em;
+  }
+
+  .contentAdminPage table thead {
+    border: none;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+  }
+
+  .contentAdminPage table tr {
+    display: block;
+    margin-bottom: 0.625em;
+  }
+
+  .contentAdminPage table td {
+    border-bottom: 1px solid #ddd;
+    display: block;
+    font-size: 0.8em;
+  }
+
+  .contentAdminPage table td::before {
+    /* aria-label has no advantage, it won't be read inside a table
+      content: attr(aria-label);
+      */
+    content: attr(data-label);
+    float: left;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+
+  .contentAdminPage table td:last-child {
+    border-bottom: 0;
+  }
+}

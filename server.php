@@ -305,7 +305,7 @@ if (isset($_SESSION["certificado"]) and $_SESSION["certificado"]==1) {
     if(count($errors) == 0) {
         $query = "SELECT * FROM utilizadores WHERE email = '$userEmail'";
         $result = mysqli_query($db, $query);
-        $_SESSION["PUTA"] = mysqli_num_rows($result);
+        
         if(mysqli_num_rows($result) == 1) {
 
             $smt=$pdo->prepare("SELECT * FROM utilizadores WHERE email = '$userEmail'");
@@ -358,8 +358,147 @@ if (isset($_SESSION["certificado"]) and $_SESSION["certificado"]==1) {
     $_SESSION["certificado"]=0;
 }
 
+if(isset($_POST['manageCandidatura'])) {
+    if($_POST['manageCandidatura']=="Aceitar"){
+        $username=isset($_POST["username"])?$_POST["username"]:'';
+        $tipoUtilizador=1;
+        $smt=$pdo->prepare('UPDATE utilizadores SET tipoUtilizador=? WHERE username=?');
+        $smt->execute([$tipoUtilizador,$username]);
+
+        $aprovado=1;
+        $smt1=$pdo->prepare('UPDATE certificado SET aprovado=? WHERE username=?');
+        $smt1->execute([$aprovado, $username]);
+
+
+        $userEmail = mysqli_real_escape_string($db, $_POST['email']);
+    
+        if(empty($userEmail)) {
+            array_push($errors, "Username/Email não está preenchido");
+        }
+        if(count($errors) == 0) {
+            $query = "SELECT * FROM utilizadores WHERE email = '$userEmail'";
+            $result = mysqli_query($db, $query);
+        
+            if(mysqli_num_rows($result) == 1) {
+
+                $smt=$pdo->prepare("SELECT * FROM utilizadores WHERE email = '$userEmail'");
+                $smt->execute();
+                $utilizador=$smt->fetch();
+                $emaill = $utilizador['email'];
+                $nomee = $utilizador['nome'];
+
+                //enviar email de confirmação
+                require_once 'PHPMailer/class.phpmailer.php';
+            
+                $mail = new PHPMailer();
+                $mail->IsSMTP();
+                $mail->SMTPSecure = "tls";
+                $mail->Host       = "smtp.gmail.com";
+                $mail->SMTPAuth = true;
+                $mail->Username = "workoutsiteES@gmail.com";
+                $mail->Password = "workoutsite";
+                $mail->Port       = 587;
+                $mail->Timeout=120;
+                $mail->SMTPDebug=0;
+            
+                $mail->FromName="Workout Website";
+
+                $mail->IsHTML(true);
+            
+                $mail->Subject = "Candidatura para professor";
+            
+                $mensagem = "<strong>$nomee</strong>,<br />
+                        Parabens,<br />
+                        A sua candidatura foi aceite.
+                        <b>Esta e uma mensagem automatica, por favor nao responda!</b>";
+
+                $corpo_email = "<html><head><style>p{font-family:Arial;font-size:12px}</style></head><body>$mensagem</body>";
+                $mail->SetFrom("workoutsiteES@gmail.com","Candidatura para professor");
+                $mail->AddAddress($emaill);
+            
+                $mail->Body=$corpo_email;
+                $mail->Send();
+
+        
+
+            } else {
+                array_push($errors, "Username ou email não encontrado!");
+            }
+    }
+
+
+    }else if($_POST['manageCandidatura']=="Rejeitar"){
+        $username=isset($_POST["username"])?$_POST["username"]:'';
+
+        $smt1=$pdo->prepare('SELECT certificado FROM certificado WHERE username=?');
+        $smt1->execute([$username]);
+        $utilizador=$smt1->fetch(PDO::FETCH_ASSOC);
+        unlink($utilizador["certificado"]);
+
+        $smt=$pdo->prepare('DELETE FROM certificado WHERE username=?');
+        $smt->execute([$username]);
 
 
 
+        $userEmail = mysqli_real_escape_string($db, $_POST['email']);
+    
+        if(empty($userEmail)) {
+            array_push($errors, "Username/Email não está preenchido");
+        }
+        if(count($errors) == 0) {
+            $query = "SELECT * FROM utilizadores WHERE email = '$userEmail'";
+            $result = mysqli_query($db, $query);
+        
+            if(mysqli_num_rows($result) == 1) {
+
+                $smt=$pdo->prepare("SELECT * FROM utilizadores WHERE email = '$userEmail'");
+                $smt->execute();
+                $utilizador=$smt->fetch();
+                $emaill = $utilizador['email'];
+                $nomee = $utilizador['nome'];
+
+                //enviar email de confirmação
+                require_once 'PHPMailer/class.phpmailer.php';
+            
+                $mail = new PHPMailer();
+                $mail->IsSMTP();
+                $mail->SMTPSecure = "tls";
+                $mail->Host       = "smtp.gmail.com";
+                $mail->SMTPAuth = true;
+                $mail->Username = "workoutsiteES@gmail.com";
+                $mail->Password = "workoutsite";
+                $mail->Port       = 587;
+                $mail->Timeout=120;
+                $mail->SMTPDebug=0;
+            
+                $mail->FromName="Workout Website";
+
+                $mail->IsHTML(true);
+            
+                $mail->Subject = "Candidatura para professor";
+            
+                $mensagem = "<strong>$nomee</strong>,<br />
+                        Infelizmente a sua candidatura não cumpriu os requesitos para se tornar professor.
+                        <b>Esta e uma mensagem automatica, por favor nao responda!</b>";
+
+                $corpo_email = "<html><head><style>p{font-family:Arial;font-size:12px}</style></head><body>$mensagem</body>";
+                $mail->SetFrom("workoutsiteES@gmail.com","Candidatura para professor");
+                $mail->AddAddress($emaill);
+            
+                $mail->Body=$corpo_email;
+                $mail->Send();
+
+        
+
+            } else {
+                array_push($errors, "Username ou email não encontrado!");
+            }
+    }
+
+
+    
+}
+    header('location: adminpage.php');
+}
 
 ?>
