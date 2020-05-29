@@ -331,9 +331,11 @@ if (isset($_SESSION["certificado"]) and $_SESSION["certificado"]==1) {
             $mail->FromName="Workout Website";
 
             $mail->IsHTML(true);
+
             
             $mail->Subject = "Candidatura para professor";
             
+
             $mensagem = "<strong>$nomee</strong>,<br />
                         Foi recebido o seu certificado para se tornar professor na nossa página.
                         Obrigado pela a sua candidatura, em breve ira ser contactado por nós para saber o resultado.
