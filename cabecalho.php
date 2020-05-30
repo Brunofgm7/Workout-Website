@@ -11,8 +11,6 @@
     <title>Workout Website</title>
     <link rel="shortcut icon" href="img/Weightlift.ico" />
 
-    
-
 </head>
 
 <body>
@@ -61,8 +59,8 @@
         <div><a href="index.php"><img src="img\workout_ico.png"></a></div>
         </div> 
         <ul class="nav-links">
-                <li><a href="#tipos_treinos" >Tipos Treinos</a></li>
-                <li><a href="#exemplos_treinos">Exemplos Treinos</a></li>
+                <li><a href="index.php#tipos_treinos" >Tipos Treinos</a></li>
+                <li><a href="index.php#exemplos_treinos">Exemplos Treinos</a></li>
                 <li><a href="registo.php">Registo</a></li>
                 <li class="login"><a href="login.php">Login</a></li>
         </ul>';

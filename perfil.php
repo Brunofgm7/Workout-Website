@@ -60,7 +60,7 @@ exit ("utilizador não definido.");
                     
                 </tr>
                 <tr>
-                    <td>
+                    <td class="hidden">
                         <label for="username">Username</label>
                     </td>
                     <td>

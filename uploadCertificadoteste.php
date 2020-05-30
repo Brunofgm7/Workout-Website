@@ -1,7 +1,9 @@
 <?php
 include 'database.php';
 include 'server.php';
+include "errors.php";
 
+$errors = array();
 
 $_SESSION["certificado"]=0;
 $target_dir = "candidaturas/";
@@ -10,10 +12,11 @@ $uploadOk = 1;
 $FileType = strtolower(pathinfo($filename,PATHINFO_EXTENSION));
 if($FileType!="pdf"){
 	$uploadOk = 0;
+	array_push($errors, "Sorry, only PDF files");
 }
 
 if ($uploadOk == 0) {
-	echo "Sorry, your file was not uploaded.";
+	array_push($errors, "Sorry, your file was not uploaded.");
 }else{
 	if(move_uploaded_file($_FILES["file"]["tmp_name"], $filename.".tmp")) 
 		{
@@ -44,13 +47,13 @@ if ($uploadOk == 0) {
 				unlink($utilizador["certificado"]);
 
 				$smt=$pdo->prepare('UPDATE certificado SET email=?,certificado=? WHERE username=?');
-                $smt->execute([$email, $certificado, $username]);
+				$smt->execute([$email, $certificado, $username]);				
 			}
+			header('Location: perfil.php');
 
 		}
 	}
 
-header('Location: perfil.php');
 
 
 ?>

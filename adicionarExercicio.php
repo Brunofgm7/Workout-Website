@@ -51,8 +51,17 @@ $db = mysqli_connect('localhost','root','','workout');
                     <div>
                     <input type="radio" id="dificuldade" name="dificuldade" value="dificil">
                         <label for="dificil">Difícil</label>
-                    </td>
-                </tr>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Selecione o ficheiro:
+                </td>
+                <td>
+                    <input type="file" name="fileToUpload" id="fileToUpload">
+                </td>
+            </tr>
             <tr>
                 <td colspan="2">
                     <button type="submit" name="adicionarExercicio" class="enviar">Adicionar</button>

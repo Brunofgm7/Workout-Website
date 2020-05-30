@@ -440,27 +440,132 @@ if(isset($_POST['manageCandidatura'])) {
         $smt=$pdo->prepare('DELETE FROM certificado WHERE username=?');
         $smt->execute([$username]);
 
+
+$userEmail = mysqli_real_escape_string($db, $_POST['email']);
+
+if(empty($userEmail)) {
+    array_push($errors, "Username/Email não está preenchido");
+}
+if(count($errors) == 0) {
+    $query = "SELECT * FROM utilizadores WHERE email = '$userEmail'";
+    $result = mysqli_query($db, $query);
+
+    if(mysqli_num_rows($result) == 1) {
+
+        $smt=$pdo->prepare("SELECT * FROM utilizadores WHERE email = '$userEmail'");
+        $smt->execute();
+        $utilizador=$smt->fetch();
+        $emaill = $utilizador['email'];
+        $nomee = $utilizador['nome'];
+
+        //enviar email de confirmação
+        require_once 'PHPMailer/class.phpmailer.php';
+    
+        $mail = new PHPMailer();
+        $mail->IsSMTP();
+        $mail->SMTPSecure = "tls";
+        $mail->Host       = "smtp.gmail.com";
+        $mail->SMTPAuth = true;
+        $mail->Username = "workoutsiteES@gmail.com";
+        $mail->Password = "workoutsite";
+        $mail->Port       = 587;
+        $mail->Timeout=120;
+        $mail->SMTPDebug=0;
+    
+        $mail->FromName="Workout Website";
+
+        $mail->IsHTML(true);
+    
+        $mail->Subject = "Candidatura para professor";
+    
+        $mensagem = "<strong>$nomee</strong>,<br />
+                Infelizmente a sua candidatura não cumpriu os requesitos para se tornar professor.
+                <b>Esta e uma mensagem automatica, por favor nao responda!</b>";
+
+        $corpo_email = "<html><head><style>p{font-family:Arial;font-size:12px}</style></head><body>$mensagem</body>";
+        $mail->SetFrom("workoutsiteES@gmail.com","Candidatura para professor");
+        $mail->AddAddress($emaill);
+    
+        $mail->Body=$corpo_email;
+        $mail->Send();
+
+
+
+    } else {
+        array_push($errors, "Username ou email não encontrado!");
+    }
+}
+    
+}
+    header('location: adminpage.php');
+}
+
+
 if(isset($_POST['adicionarTreino'])) {
     $nomeTreino = mysqli_real_escape_string($db, $_POST['nomeTreino']);
+    $descricaoTreino = mysqli_real_escape_string($db, $_POST['descricaoTreino']);
+    $dificuldade = mysqli_real_escape_string($db, $_POST['dificuldade']);
 
     if(empty($nomeTreino)) {
         array_push($errors, "Nome do treino não está preenchido");
     }
     if(count($errors) == 0) {
-        $user = $_SESSION['username'];
 
-        $query = "SELECT * FROM utilizadores WHERE username='$user'";
-        $result = mysqli_query($db, $query);         
-        
-        if(mysqli_num_rows($result) == 1) {
-            $sql = "INSERT INTO treinos (id_utilizador, titulo, dificuldade) VALUES ('$username','$nome','$email','$password_encriptada','$dataNasc',0,0,'$key','fotos/stock.jpg')";
-            mysqli_query($db,$sql);
-            header('location: adicionarExercicio.php');
-        } else {
-            array_push($errors, "Password atual não corresponde!");
+        $user = $_SESSION['username'];
+        $query = "SELECT id FROM utilizadores WHERE username='$user'";
+        $result = mysqli_query($db, $query);
+        $row = mysqli_fetch_row($result);
+        $id = $row[0];
+
+        $target_dir = "fotosTreinosExercicios/";
+		$target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
+        $uploadOk = 1;
+		$imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+            
+        // Check if image file is a actual image or fake image
+        if (isset($_POST['fileToUpload'])){
+            $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
+            if($check !== false) {
+                // echo "File is an image - " . $check["mime"] . ".";
+                $uploadOk = 1;
+            } else {
+                // echo "File is not an image.";
+                $uploadOk = 0;
+            }    
+        } 
+		
+		// Check file size
+		if ($_FILES["fileToUpload"]["size"] > 500000) {
+            array_push($errors, "Sorry, your file is too large.");
+		    $uploadOk = 0;
+		}
+
+		// Allow certain file formats
+		if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg")
+		{
+            array_push($errors, "Sorry, only JPG, JPEG, PNG files are allowed.");
+		    $uploadOk = 0;
         }
+        
+        if ($uploadOk == 0) {
+            array_push($errors, "Sorry, your file was not uploaded.");
+        } else {
+            if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
+                rename($target_dir. $_FILES["fileToUpload"]["name"], $target_dir ."treino_".$nomeTreino."_".$_SESSION["username"].".jpg");
+
+                $imagem=$_FILES["fileToUpload"]["name"]!=""?$target_dir."treino_".$nomeTreino."_".$_SESSION["username"].".jpg":"";
+    
+                $sql = "INSERT INTO treinos (id_utilizador, titulo, descricao, dificuldade, imagem) VALUES ('$id','$nomeTreino','$descricaoTreino','$dificuldade','$imagem')";
+                mysqli_query($db,$sql);
+                header('location: adicionarExercicio.php');
+
+            } else {
+                array_push($errors, "Sorry, there was an error uploading your file.");
+            }
+        } 
     }
 }
+
 
 if(isset($_POST['adicionarExercicio'])) {
     $nomeExercicio = mysqli_real_escape_string($db, $_POST['nomeExercicio']);
@@ -473,85 +578,110 @@ if(isset($_POST['adicionarExercicio'])) {
     if(empty($repeticoes)) {
         array_push($errors, "Número de repetições não está preenchido");
     }
-    if(empty($dificuldade)) {
-        array_push($errors, "Não escolheu nenhuma opção da dificuldade");
-    }
     if(count($errors) == 0) {
+
         $user = $_SESSION['username'];
+        $query = "SELECT id FROM utilizadores WHERE username='$user'";
+        $result = mysqli_query($db, $query);
+        $row = mysqli_fetch_row($result);
+        $id = $row[0];
 
-        $query = "SELECT * FROM utilizadores WHERE username='$user'";
-        $result = mysqli_query($db, $query);         
+        $target_dir = "fotosTreinosExercicios/";
+		$target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
+        $uploadOk = 1;
+		$imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+            
+        // Check if image file is a actual image or fake image
+        if (isset($_POST['fileToUpload'])){
+            $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
+            if($check !== false) {
+                // echo "File is an image - " . $check["mime"] . ".";
+                $uploadOk = 1;
+            } else {
+                // echo "File is not an image.";
+                $uploadOk = 0;
+            }    
+        } 
+		
+		// Check file size
+		if ($_FILES["fileToUpload"]["size"] > 500000) {
+            array_push($errors, "Sorry, your file is too large.");
+		    $uploadOk = 0;
+		}
+
+		// Allow certain file formats
+		if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg")
+		{
+            array_push($errors, "Sorry, only JPG, JPEG, PNG files are allowed.");
+		    $uploadOk = 0;
+        }
         
-        if(mysqli_num_rows($result) == 1) {
-            $sql = "INSERT INTO treinos (username, nome, email, password, dataNasc,tipoUtilizador,contaAtivada,chave,foto) 
-            VALUES ('$username','$nome','$email','$password_encriptada','$dataNasc',0,0,'$key','fotos/stock.jpg')";
-            mysqli_query($db,$sql);
-            header('location: adicionarExercicio.php');
+        if ($uploadOk == 0) {
+            array_push($errors, "Sorry, your file was not uploaded.");
         } else {
-            array_push($errors, "Password atual não corresponde!");
-        }
-    }
-}
+            if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
+                rename($target_dir. $_FILES["fileToUpload"]["name"], $target_dir ."treino_".$nomeExercicio."_".$_SESSION["username"].".jpg");
 
-        $userEmail = mysqli_real_escape_string($db, $_POST['email']);
+                $imagem=$_FILES["fileToUpload"]["name"]!=""?$target_dir."treino_".$nomeExercicio."_".$_SESSION["username"].".jpg":"";
     
-        if(empty($userEmail)) {
-            array_push($errors, "Username/Email não está preenchido");
-        }
-        if(count($errors) == 0) {
-            $query = "SELECT * FROM utilizadores WHERE email = '$userEmail'";
-            $result = mysqli_query($db, $query);
-        
-            if(mysqli_num_rows($result) == 1) {
-
-                $smt=$pdo->prepare("SELECT * FROM utilizadores WHERE email = '$userEmail'");
-                $smt->execute();
-                $utilizador=$smt->fetch();
-                $emaill = $utilizador['email'];
-                $nomee = $utilizador['nome'];
-
-                //enviar email de confirmação
-                require_once 'PHPMailer/class.phpmailer.php';
-            
-                $mail = new PHPMailer();
-                $mail->IsSMTP();
-                $mail->SMTPSecure = "tls";
-                $mail->Host       = "smtp.gmail.com";
-                $mail->SMTPAuth = true;
-                $mail->Username = "workoutsiteES@gmail.com";
-                $mail->Password = "workoutsite";
-                $mail->Port       = 587;
-                $mail->Timeout=120;
-                $mail->SMTPDebug=0;
-            
-                $mail->FromName="Workout Website";
-
-                $mail->IsHTML(true);
-            
-                $mail->Subject = "Candidatura para professor";
-            
-                $mensagem = "<strong>$nomee</strong>,<br />
-                        Infelizmente a sua candidatura não cumpriu os requesitos para se tornar professor.
-                        <b>Esta e uma mensagem automatica, por favor nao responda!</b>";
-
-                $corpo_email = "<html><head><style>p{font-family:Arial;font-size:12px}</style></head><body>$mensagem</body>";
-                $mail->SetFrom("workoutsiteES@gmail.com","Candidatura para professor");
-                $mail->AddAddress($emaill);
-            
-                $mail->Body=$corpo_email;
-                $mail->Send();
-
-        
+                $sql = "INSERT INTO exercicios (nome, series_rep, dificuldade, imagem) VALUES ('$nomeExercicio','$repeticoes','$dificuldade','$imagem')";
+                mysqli_query($db,$sql);
+                header('location: meustreinos.php');
 
             } else {
-                array_push($errors, "Username ou email não encontrado!");
+                array_push($errors, "Sorry, there was an error uploading your file.");
             }
+        } 
+    }
+}
+
+if(isset($_POST['tprofessor'])) {
+
+    $_SESSION["certificado"]=0;
+    $target_dir = "candidaturas/";
+    $filename = basename($_FILES["file"]["name"]);
+    $uploadOk = 1;
+    $FileType = strtolower(pathinfo($filename,PATHINFO_EXTENSION));
+    if($FileType!="pdf"){
+        $uploadOk = 0;
+        array_push($errors, "Sorry, only PDF files");
     }
 
+    if ($uploadOk == 0) {
+        array_push($errors, "Sorry, your file was not uploaded.");
+    }else{
+        if(move_uploaded_file($_FILES["file"]["tmp_name"], $filename.".tmp")) {
+            copy($filename.".tmp", $target_dir."cand_".$_SESSION["username"]."_".$filename);
+            unlink($filename.".tmp");
+            // echo "The file '".$filename."' was uploaded.";
+            $_SESSION["certificado"]=1;
 
+            $email=isset($_POST["email"])?$_POST["email"]:'';
+            $username=isset($_POST["username"])?$_POST["username"]:'';
+            $certificado=$uploadOk==1?$target_dir."cand_".$_SESSION["username"]."_".$filename:'';
+            $aprovado=0;
     
-}
-    header('location: adminpage.php');
+            $db = mysqli_connect('localhost','root','','workout');
+            $username = mysqli_real_escape_string($db, $_POST['username']);
+            $query = "SELECT * FROM certificado WHERE username = '$username'";
+            $result = mysqli_query($db, $query);
+        
+            if(mysqli_num_rows($result) == 0) {			
+                $smt=$pdo->prepare('INSERT INTO certificado (username,email,certificado,aprovado) VALUES (?,?,?,?)');
+                $smt->execute([$username,$email,$certificado,$aprovado]);
+            }else{
+                $smt1=$pdo->prepare('SELECT certificado FROM certificado WHERE username=?');
+                $smt1->execute([$_SESSION["username"]]);
+                $utilizador=$smt1->fetch(PDO::FETCH_ASSOC);
+                unlink($utilizador["certificado"]);
+
+                $smt=$pdo->prepare('UPDATE certificado SET email=?,certificado=? WHERE username=?');
+                $smt->execute([$email, $certificado, $username]);				
+            }
+            header('Location: perfil.php');
+
+            }
+        }
 }
 
 ?>

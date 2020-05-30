@@ -44,7 +44,7 @@ div p {
   padding-top: 5%;
 }
 .contentLogin {
-  padding-top: 5%;
+  padding-top: 8%;
 }
 .contentPass {
   padding-top: 6%;
@@ -1337,7 +1337,7 @@ body {
 
 .contentTProfessor * {
   background-color: white;
-  text-align: center;
+  text-align-last: center;
 }
 .contentTProfessor input:focus {
   border: 3px solid #555;
@@ -1757,4 +1757,8 @@ input[type="date"] {
   .contentAdminPage table td:last-child {
     border-bottom: 0;
   }
+}
+
+td.hidden {
+  overflow: hidden;
 }

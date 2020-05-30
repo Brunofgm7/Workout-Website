@@ -7,6 +7,7 @@ include 'database.php';
 include 'server.php';
 include "cabecalho.php";
 
+
 if(isset($_SESSION["username"]))
 {
 //verificar se o formulário foi submetido 
@@ -39,12 +40,13 @@ exit ("utilizador não definido.");
                 <h2>Tornar-me Professor</h2> 
             </thead>
             <tbody>
-            	<form action="uploadCertificado.php" method="post" enctype="multipart/form-data">
+                <form action="tprofessor.php" method="post" enctype="multipart/form-data">
+                <?php include('errors.php'); ?>
                 <tr>
                     <td>
                         <label for="username">Username</label>
                     </td>
-                    <td>
+                    <td class="hidden">
                         <label for="user"><?=$utilizador['username']?></label>
                         <input type="hidden" name="username" placeholder="Username" value="<?=$utilizador['username']?>" id="username">
                     </td>
@@ -53,7 +55,7 @@ exit ("utilizador não definido.");
                     <td>
                         <label for="email">Email</label>
                     </td>
-                    <td>
+                    <td class="hidden">
                     	<label for="user"><?=$utilizador['email']?></label>
                         <input type="hidden" name="email" placeholder="Email" value="<?=$utilizador['email']?>" id="email">
                     </td>
@@ -68,7 +70,7 @@ exit ("utilizador não definido.");
                 </tr>
                 <tr>
                     <td colspan="2">
-                        <input type="submit" value="Enviar Certificado" class="enviar">
+                        <input type="submit" name="tprofessor" value="Enviar Certificado" class="enviar">
                     </td>
                 </tr>
                 </form>
