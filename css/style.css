@@ -1194,6 +1194,7 @@ body {
 .contentPass * {
   background-color: white;
   text-align: center;
+  text-align-last: center;
 }
 .contentPass input:focus {
   border: 3px solid #555;
@@ -1511,8 +1512,14 @@ body {
   width: 40px;
   height:40px;
   color:white;
-  
 }
+
+.meusTreinosRight .material-icons {
+  width: 40px;
+  height:40px;
+  color:black;
+}
+
 .meusTreinosLeft a {
   font-size:1.5vw;
   text-decoration: none;
@@ -1762,3 +1769,43 @@ input[type="date"] {
 td.hidden {
   overflow: hidden;
 }
+
+.nome_treino {
+  color: white;
+  position: relative;
+}
+
+.nome_exercicio p {
+  display: inline-block;
+  background: blue;
+  color: #fff;
+  padding: 0.4em 0.6em;
+  font-size: 1.3em;
+  border-radius: 1em;
+}
+
+.nome_exercicio figure {
+  display: none;
+  position: absolute;
+}
+
+.nome_exercicio img {
+  display: block;
+  border-radius: 0.8em;
+  max-width: 100%;
+  height: auto;
+}
+
+.nome_exercicio:focus figure,
+.nome_exercicio:hover figure {
+  display: block;
+}
+.nome_exercicio:focus p,
+.nome_exercicio:hover p {
+  background: red;
+}
+
+p.treino_inacessivel {
+  color: red;
+}
+

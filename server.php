@@ -557,7 +557,7 @@ if(isset($_POST['adicionarTreino'])) {
     
                 $sql = "INSERT INTO treinos (id_utilizador, titulo, descricao, dificuldade, imagem) VALUES ('$id','$nomeTreino','$descricaoTreino','$dificuldade','$imagem')";
                 mysqli_query($db,$sql);
-                header('location: adicionarExercicio.php');
+                header('location: meustreinos.php');
 
             } else {
                 array_push($errors, "Sorry, there was an error uploading your file.");
@@ -571,6 +571,7 @@ if(isset($_POST['adicionarExercicio'])) {
     $nomeExercicio = mysqli_real_escape_string($db, $_POST['nomeExercicio']);
     $repeticoes = mysqli_real_escape_string($db, $_POST['repeticoes']);
     $dificuldade = mysqli_real_escape_string($db, $_POST['dificuldade']);
+    $id_treino = $_GET['id'];
 
     if(empty($nomeExercicio)) {
         array_push($errors, "Nome do exercicio não está preenchido");
@@ -624,10 +625,9 @@ if(isset($_POST['adicionarExercicio'])) {
 
                 $imagem=$_FILES["fileToUpload"]["name"]!=""?$target_dir."treino_".$nomeExercicio."_".$_SESSION["username"].".jpg":"";
     
-                $sql = "INSERT INTO exercicios (nome, series_rep, dificuldade, imagem) VALUES ('$nomeExercicio','$repeticoes','$dificuldade','$imagem')";
+                $sql = "INSERT INTO exercicios (id_treino, nome, series_rep, dificuldade, imagem) VALUES ('$id_treino','$nomeExercicio','$repeticoes','$dificuldade','$imagem')";
                 mysqli_query($db,$sql);
-                header('location: meustreinos.php');
-
+                header('location: meustreinos.php?id='.$id_treino);
             } else {
                 array_push($errors, "Sorry, there was an error uploading your file.");
             }

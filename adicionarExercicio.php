@@ -4,7 +4,7 @@ include 'database.php';
 include 'server.php';
 include "cabecalho.php";
 $db = mysqli_connect('localhost','root','','workout');
-
+$id = $_GET['id'];
 
 ?>
 
@@ -17,7 +17,7 @@ $db = mysqli_connect('localhost','root','','workout');
                 <h2>Adicionar exercicio</h2>
             </thead>
             <tr>
-                <form action="adicionarExercicio.php" method="post">
+                <form action="adicionarExercicio.php?id=<?php echo $id ?>" method="post" enctype="multipart/form-data">
                 <?php include('errors.php'); ?>
                 <td>
                     <label for="nomeExercicio">Nome</label>
