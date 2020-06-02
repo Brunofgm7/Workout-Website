@@ -1806,11 +1806,10 @@ td.hidden {
 }
 .titulo {
   font-size: 1.5vw;
-  color: white;
+  color: black;
   font-family: "poppins";
-  /* font-weight: bold; */
+  font-weight: bold;
   text-align: center;
-  background-color: grey;
 }
 
 .nome_exercicio p {

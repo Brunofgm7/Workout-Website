@@ -113,7 +113,7 @@ if (isset($_SESSION["username"])) {
                 $result2 = mysqli_query($db, $query);
                 if (mysqli_num_rows($result2) == 1) {
     ?>
-                    <p class="titulo"> <?php echo $titulo ?><a href="#"><i class="material-icons editar">edit</i></a></p>
+                    <p class="titulo"> <?php echo $titulo ?></p>
                     <?php
                     while ($row = $result->fetch_assoc()) {
                     ?>
