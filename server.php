@@ -720,6 +720,24 @@ if(isset($_POST['apagarTreino'])){
     header('Location: meustreinos.php');
 }
 
+if(isset($_POST['apagarExercicio'])){
+    $id=$_POST['id_exercicio'];
+
+    $smt=$pdo->prepare('SELECT id_treino FROM exercicios WHERE id_exerc=?');
+	$smt->execute([$id]);
+	$aaa=$smt->fetch(PDO::FETCH_ASSOC);
+	$id_treino=$aaa['id_treino'];
+
+
+    $query = "DELETE FROM exercicios WHERE id_exerc=$id";
+    $result = mysqli_query($db, $query);
+
+ 
+    //header('Location: meustreinos.php');
+
+    header('location: meustreinos.php?id='.$id_treino);
+}
+
 
 
 ?>

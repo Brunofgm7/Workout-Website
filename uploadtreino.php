@@ -42,7 +42,8 @@ if(!empty($_POST)) {
 		  if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
 		    echo "The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploaded.";
 			rename($target_dir. $_FILES["fileToUpload"]["name"], $target_dir ."treino_".$titulo."_".$_SESSION["username"].".jpg");
-		  } else {
+			
+		} else {
 		    echo "Sorry, there was an error uploading your file.";
 		  }
 		}
@@ -51,9 +52,9 @@ if(!empty($_POST)) {
 	$titulo=isset($_POST["titulo"])?$_POST["titulo"]:'';
 	$descricao=isset($_POST["descricao"])?$_POST["descricao"]:'';
 	$dificuldade=isset($_POST["dificuldade"])?$_POST["dificuldade"]:'';
-	$imagem=$_FILES["fileToUpload"]["name"]!=""?$target_dir."treino_".$nomeTreino."_".$_SESSION["username"].".jpg":"";
+	$imagem=$_FILES["fileToUpload"]["name"]!=""?$target_dir."treino_".$nomeTreino."_".$_SESSION["username"].".jpg":$_POST["imagem"];
 
-
+	
 	//criar o update na base de dados
 	$smt=$pdo->prepare('UPDATE treinos SET titulo=?,descricao=?,dificuldade=?,imagem=? WHERE id=?');
 	$smt->execute([$titulo,$descricao,$dificuldade,$imagem,$id]);

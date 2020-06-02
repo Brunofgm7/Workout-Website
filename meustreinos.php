@@ -113,16 +113,23 @@ if (isset($_SESSION["username"])) {
                 $result2 = mysqli_query($db, $query);
                 if (mysqli_num_rows($result2) == 1) {
     ?>
-                    <p class="titulo"> <?php echo $titulo ?><a href="#"><i class="material-icons editar">edit</i></a></p>
+                    <p class="titulo"> <?php echo $titulo ?></p>
                     <?php
                     while ($row = $result->fetch_assoc()) {
                     ?>
 
                         <div class="nome_exercicio">
+                            <form action="meustreinos.php" method="post">
+
                             <p><?php echo $row["nome"] ?> -> <?php echo $row["series_rep"] ?> </p>
                             <figure>
                                 <img src='<?php echo $row["imagem"] ?>' width="200" height="auto">
                             </figure>
+                            <a href="editarExercicio.php?id=<?php echo $row["id_exerc"] ?>"><i style="font-size: 20px;" class="fa fa-pencil" aria-hidden="true"></i></a>
+                                <input type="hidden" name="id_exercicio" id="id_exercicio" value="<?=$row['id_exerc']?>">
+                                <button type="submit" name="apagarExercicio" class="apagarButton"><i style="font-size: 20px;" class="fa fa-trash" aria-hidden="true"></i></button>
+         
+                            </form>
                         </div>
 
 
@@ -137,11 +144,11 @@ if (isset($_SESSION["username"])) {
         }
         ?>
         <p style="padding-left:3%;"><a href="adicionarExercicio.php?id=<?php echo $id ?>"><i class="material-icons">add_circle</i></a></p> <?php
-                                                                                                                                        } else {
-                                                                                                                                            ?>
+        } else {
+            ?>
         <p class="NoTreino">Selecione ou crie um treino</p>
     <?php
-                                                                                                                                        }
+        }
     ?>
 </div>
 </td>

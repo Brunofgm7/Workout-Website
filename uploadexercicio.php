@@ -51,14 +51,19 @@ if(!empty($_POST)) {
 	$nome=isset($_POST["nome"])?$_POST["nome"]:'';
 	$series_rep=isset($_POST["series_rep"])?$_POST["series_rep"]:'';
 	$dificuldade=isset($_POST["dificuldade"])?$_POST["dificuldade"]:'';
-	$imagem=$_FILES["fileToUpload"]["name"]!=""?$target_dir."exercicio_".$nomeTreino."_".$_SESSION["username"].".jpg":"";
+	$imagem=$_FILES["fileToUpload"]["name"]!=""?$target_dir."exercicio_".$nomeTreino."_".$_SESSION["username"].".jpg":$_POST["imagem"];
 
 
 	//criar o update na base de dados
 	$smt=$pdo->prepare('UPDATE exercicios SET nome=?,series_rep=?,dificuldade=?,imagem=? WHERE id_exerc=?');
 	$smt->execute([$nome,$series_rep,$dificuldade,$imagem,$id]);
-        
+		
+	$smt=$pdo->prepare('SELECT id_treino FROM exercicios WHERE id_exerc=?');
+	$smt->execute([$id]);
+	$aaa=$smt->fetch(PDO::FETCH_ASSOC);
+	$id_treino=$aaa['id_treino'];
 
-header('location: meustreinos.php?id='.$id);
+header('location: meustreinos.php?id='.$id_treino);
+
 
 ?>

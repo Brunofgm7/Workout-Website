@@ -82,7 +82,7 @@ exit ("treino não definido.");
                 <tr>
                     <td colspan="2">
                         <div class="image-upload">
-                            <label for="fileToUpload"  class="futilizador">
+                            <label for="fileToUpload" class="futilizador">
                                 <img src="<?=$treino['imagem']?>"/>
                             </label>
                             <p class="label">Alterar Foto</p>
