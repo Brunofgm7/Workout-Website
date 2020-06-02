@@ -631,9 +631,9 @@ if(isset($_POST['adicionarExercicio'])) {
             array_push($errors, "Sorry, your file was not uploaded.");
         } else {
             if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
-                rename($target_dir. $_FILES["fileToUpload"]["name"], $target_dir ."treino_".$nomeExercicio."_".$_SESSION["username"].".jpg");
+                rename($target_dir. $_FILES["fileToUpload"]["name"], $target_dir ."exercicio_".$nomeExercicio."_".$_SESSION["username"].".jpg");
 
-                $imagem=$_FILES["fileToUpload"]["name"]!=""?$target_dir."treino_".$nomeExercicio."_".$_SESSION["username"].".jpg":"";
+                $imagem=$_FILES["fileToUpload"]["name"]!=""?$target_dir."exercicio_".$nomeExercicio."_".$_SESSION["username"].".jpg":"";
     
                 $sql = "INSERT INTO exercicios (id_treino, nome, series_rep, dificuldade, imagem) VALUES ('$id_treino','$nomeExercicio','$repeticoes','$dificuldade','$imagem')";
                 mysqli_query($db,$sql);
@@ -643,9 +643,9 @@ if(isset($_POST['adicionarExercicio'])) {
             }
         } 
     } else {
-            $sql = "INSERT INTO treinos (id_utilizador, titulo, descricao, dificuldade) VALUES ('$id','$nomeTreino','$descricaoTreino','$dificuldade')";
+            $sql = "INSERT INTO exercicios (id_treino, nome, series_rep, dificuldade) VALUES ('$id_treino','$nomeExercicio','$repeticoes','$dificuldade')";
             mysqli_query($db,$sql);
-            header('location: meustreinos.php');
+            header('location: meustreinos.php?id='.$id_treino);
         }
     }
 }

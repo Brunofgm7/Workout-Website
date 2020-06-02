@@ -52,10 +52,6 @@ if (isset($_SESSION["username"])) {
                             <a href="meustreinos.php?id=<?php echo $row["id"] ?>">
                             <form action="meustreinos.php" method="post">
                                 <div class="dormir"><b><?php echo $row["titulo"] ?></b>
-                                <!-- <figure>
-                                    <img src='<?php echo $row["imagem"]?>' width="200" height="auto">
-                                    <div class="desc" style="background-color:red"><p></p></div>
-                                </figure>  -->
                                 <figure>
                                     <div class="nome_exercicio">
                                         
@@ -130,8 +126,11 @@ if (isset($_SESSION["username"])) {
                                             <p><?php echo $row["nome"]?> -> <?php echo $row["series_rep"]?> </p>                                
                                             <figure>
                                                 <img src='<?php echo $row["imagem"]?>' width="200" height="auto">
-                                            </figure>                                        
+                                            </figure> 
+                                            <a href="editarExercicio.php?id=<?php echo $row["id_exerc"] ?>"><i style="font-size: 20px;" class="fa fa-pencil" aria-hidden="true"></i></a>
+                                            <button type="submit" name="apagarExercicio" class="apagarButton"><i style="font-size: 20px;" class="fa fa-trash" aria-hidden="true"></i></button>                                       
                                         </div>
+                                        
                                            
 
                                     <?php

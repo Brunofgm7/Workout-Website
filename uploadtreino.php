@@ -4,8 +4,7 @@ include 'server.php';
 
 $id = $_GET['id'];
 
-if(!empty($_POST))
-    {
+if(!empty($_POST)) {
     	$target_dir = "fotosTreinosExercicios/";
 		$target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
 		$uploadOk = 1;
