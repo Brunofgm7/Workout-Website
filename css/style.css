@@ -1516,10 +1516,15 @@ body {
 
 .meusTreinosRight .material-icons {
   width: 40px;
-  height:40px;
+  height:auto;
   color:black;
 }
-
+.meusTreinosRight p a i:hover {
+  color:rgb(87, 87, 87);
+}
+.meusTreinosLeft p a i:hover{
+  color:rgb(202, 202, 202);
+}
 .meusTreinosLeft a {
   font-size:1.5vw;
   text-decoration: none;
@@ -1528,8 +1533,9 @@ body {
   color:white;
 }
 .contentMeusTreinos {
-  width: 100%;
+  width: 90%;
   display: table;
+  margin:auto;
 }
 .meusTreinosLeft{
   border: 1px solid red;
@@ -1542,7 +1548,7 @@ body {
   width: 40%;
   padding-left: 3%;
   float: left;
-  background-color: black;
+  background-color: rgb(77, 76, 76);
   display: table-cell;
 }
 .contentMeusTreinos .meusTreinosRight {
@@ -1553,7 +1559,7 @@ body {
   display: table-cell;
 }
 .contentMeusTreinos h2 {
-  color: rgb(35, 35, 35);
+  color: rgb(15, 15, 15);
   font-weight: bold;
   text-align: center;
   margin: auto;
@@ -1770,18 +1776,39 @@ td.hidden {
   overflow: hidden;
 }
 
-.nome_treino {
-  color: white;
-  position: relative;
+.nome_treino a{
+  
+  font-size:1.4vw;
+}
+
+.nome_exercicio{
+  
+height:auto;
+width:0;
+display:block;
+
+}
+.titulo {
+  font-size:1.5vw;
+  color:black;
+  font-family:'poppins';
+  font-weight: bold;
+  text-align: center;
+ 
 }
 
 .nome_exercicio p {
+  font-family: 'poppins';
+  font-weight: bold;
+  color: black;
+  padding: 0vw 0.2vw 0vw 0.2vw;
+  font-size:1.3vw;
+  border-radius: 6px;
+  letter-spacing: 1px;
   display: inline-block;
-  background: blue;
-  color: #fff;
-  padding: 0.4em 0.6em;
-  font-size: 1.3em;
-  border-radius: 1em;
+}
+.nome_exercicio p:hover{
+  cursor: pointer;
 }
 
 .nome_exercicio figure {
@@ -1796,16 +1823,55 @@ td.hidden {
   height: auto;
 }
 
-.nome_exercicio:focus figure,
+.nome_exercicio:focus figure ,
 .nome_exercicio:hover figure {
   display: block;
 }
-.nome_exercicio:focus p,
-.nome_exercicio:hover p {
-  background: red;
+
+
+.nome_treino p:hover{
+  cursor: pointer;
 }
 
-p.treino_inacessivel {
-  color: red;
+.nome_treino figure{
+  display: none;
+  position: absolute;
 }
 
+.nome_treino .desc {
+  padding: 15px;
+  text-align: center;
+  display:none;
+}
+.nome_treino:hover .overlay {
+  height: 40%;
+}
+
+
+
+.desc {
+  white-space: nowrap; 
+  color: white;
+  font-size: 20px;
+  position: absolute;
+  overflow: hidden;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+}
+.nome_treino .desc:hover {
+  display: block;
+  background-color: black;
+}
+.nome_treino img {
+  display: block;
+  border-radius: 0.8em;
+  max-width: 100%;
+  height: auto;
+}
+
+.nome_treino:focus figure,
+.nome_treino:hover figure{
+  display: block;
+}
