@@ -55,7 +55,7 @@ To start using this code you only need XAMPP.
 
 * [PHP](https://www.php.net/)
 * [XAMPP](https://www.apachefriends.org/index.html)
-* [Code](https://code.visualstudio.com/)
+* [VS Code](https://code.visualstudio.com/)
 
 
 ## Versioning
