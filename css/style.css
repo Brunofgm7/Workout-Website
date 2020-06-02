@@ -1763,9 +1763,16 @@ td.hidden {
 }
 
 .nome_treino a {
-  font-size: 1.4vw;
+  font-size: 1.5vw;
 }
-
+.nome_treino{
+  height:auto; 
+  display:block;
+ 
+}
+.dormir {
+  display:inline-block;
+}
 .nome_exercicio {
   height: auto;
   width: 0;
@@ -1810,30 +1817,45 @@ td.hidden {
   display: block;
 }
 
-.nome_treino p:hover {
-  cursor: pointer;
-}
+
 
 p.treino_inacessivel {
   color: red;
 }
-.nome_treino figure {
+.dormir figure {
   display: none;
   position: absolute;
 }
 
 .apagarButton {
   border: 0;
-  background-color: black;
-  color: red;
+  color: rgb(209, 3, 3);
+  background-color: Transparent;
+    background-repeat:no-repeat;
+    border: none;
+    cursor:pointer;
+    overflow: hidden;
+    outline:none;
 }
-.nome_treino .desc {
-  padding: 15px;
-  text-align: center;
-  display: none;
+
+.apagarButton:hover{
+  color:rgb(145, 145, 145);
 }
-.nome_treino:hover .overlay {
-  height: 40%;
+.editarTreino{
+  background-color: Transparent;
+  background-repeat:no-repeat;
+  border: none;
+  cursor:pointer;
+  overflow: hidden;
+  outline:none;
+  color:rgb(39, 39, 39);
+}
+.editarTreino:hover{
+  color:rgb(209, 207, 207);
+}
+
+figure {
+  cursor:default;
 }
 
 .desc {
@@ -1847,18 +1869,18 @@ p.treino_inacessivel {
   transform: translate(-50%, -50%);
   -ms-transform: translate(-50%, -50%);
 }
-.nome_treino .desc:hover {
+.dormir .desc:hover {
   display: block;
   background-color: black;
 }
-.nome_treino img {
+.dormir img {
   display: block;
   border-radius: 0.8em;
   max-width: 100%;
   height: auto;
 }
 
-.nome_treino:focus figure,
-.nome_treino:hover figure {
+.dormir:focus figure,
+.dormir:hover figure {
   display: block;
 }
