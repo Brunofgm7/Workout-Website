@@ -30,9 +30,13 @@ h2 {
 }
 div p {
   font-family: "Poppins", sans-serif;
-  color: rgb(155, 155, 155);
+  color: rgb(92, 92, 92);
 }
-
+.NoTreino{
+  font-family: "Poppins", sans-serif;
+  color: rgb(92, 92, 92);
+  font-weight: bold;
+}
 .container img {
   padding-top: 4%;
 }
@@ -1529,14 +1533,20 @@ body {
   width: 90%;
   display: table;
   margin: auto;
+  height:auto;
+
 }
 .meusTreinosLeft {
-  border: 1px solid red;
-}
-.meusTreinosRight {
+  /* border-top: 1px solid black;
+  border-right:1px solid black; */
   border: 1px solid black;
+} 
+ .meusTreinosRight {
+  border-top: 1px solid black;
 }
-
+.nome_exercicio{
+  padding-left:3%;
+}
 .contentMeusTreinos .meusTreinosLeft {
   width: 40%;
   padding-left: 3%;
@@ -1546,7 +1556,7 @@ body {
 }
 .contentMeusTreinos .meusTreinosRight {
   width: 60%;
-  padding-left: 3%;
+  /* padding-left: 3%; */
   float: right;
   background-color: white;
   display: table-cell;
@@ -1563,6 +1573,9 @@ body {
 .contentMeusTreinos table {
   padding-top: 2%;
   width: 100%;
+  padding: 10px;
+  box-shadow: 5px 10px 18px #888888;
+  
 }
 .contentMeusTreinos table td {
   height: auto;
@@ -1761,7 +1774,13 @@ input[type="date"] {
 td.hidden {
   overflow: hidden;
 }
-
+.foto_treinos{
+  width:200px;
+  height:auto;
+  background-color:rgb(214, 214, 214);
+  text-align:center;
+  font-family:'poppins';
+}
 .nome_treino a {
   font-size: 1.5vw;
 }
@@ -1769,6 +1788,11 @@ td.hidden {
   height:auto; 
   display:block;
  
+}
+.NoTreino{
+  text-align: center;
+  font-size:1.7vw;
+
 }
 .dormir {
   display:inline-block;
@@ -1780,10 +1804,11 @@ td.hidden {
 }
 .titulo {
   font-size: 1.5vw;
-  color: black;
+  color: white;
   font-family: "poppins";
-  font-weight: bold;
+  /* font-weight: bold; */
   text-align: center;
+  background-color: grey;
 }
 
 .nome_exercicio p {
@@ -1807,7 +1832,7 @@ td.hidden {
 
 .nome_exercicio img {
   display: block;
-  border-radius: 0.8em;
+  border-radius: 0;
   max-width: 100%;
   height: auto;
 }
@@ -1875,7 +1900,7 @@ figure {
 }
 .dormir img {
   display: block;
-  border-radius: 0.8em;
+  border-radius: 0;
   max-width: 100%;
   height: auto;
 }

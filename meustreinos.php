@@ -52,10 +52,20 @@ if (isset($_SESSION["username"])) {
                             <a href="meustreinos.php?id=<?php echo $row["id"] ?>">
                             <form action="meustreinos.php" method="post">
                                 <div class="dormir"><b><?php echo $row["titulo"] ?></b>
-                                <figure>
+                                <!-- <figure>
                                     <img src='<?php echo $row["imagem"]?>' width="200" height="auto">
-                                    <div class="desc" style="background-color:red"><p><?php echo $row["descricao"] ?></p></div>
-                                </figure> 
+                                    <div class="desc" style="background-color:red"><p></p></div>
+                                </figure>  -->
+                                <figure>
+                                    <div class="nome_exercicio">
+                                        
+                                            <div class="foto_treinos">
+                                                <img src='<?php echo $row["imagem"]?>' width="200" height="auto">
+                                                <p style="font-size:17px;"><?php echo $row["descricao"] ?></p>
+                                            </div>
+                                        
+                                    </div>
+                                </figure>
                             </a>
                             
                                 <input type="hidden" name="id" value="<?=$row['id']?>">
@@ -111,7 +121,7 @@ if (isset($_SESSION["username"])) {
                                     $result2 = mysqli_query($db, $query);
                                     if(mysqli_num_rows($result2) == 1) {
                                         ?>
-                                        <p class="titulo"> <?php echo $titulo ?> <a href="#" ><i class="material-icons editar">edit</i></a></p>
+                                        <p class="titulo"> <?php echo $titulo ?> <!--<a href="#" ><i class="material-icons editar">edit</i></a>--></p>
                                         <?php
                                         while($row = $result->fetch_assoc()) {
                                         ?>
@@ -122,6 +132,8 @@ if (isset($_SESSION["username"])) {
                                                 <img src='<?php echo $row["imagem"]?>' width="200" height="auto">
                                             </figure>                                        
                                         </div>
+                                           
+
                                     <?php
                                         }
                                     }                            
@@ -132,10 +144,10 @@ if (isset($_SESSION["username"])) {
                                 <?php
                             }
                     ?>
-                    <p><a href="adicionarExercicio.php?id=<?php echo $id ?>"><i class="material-icons">add_circle</i></a></p>             <?php
+                    <p style="padding-left:3%;"><a href="adicionarExercicio.php?id=<?php echo $id ?>"><i class="material-icons">add_circle</i></a></p>             <?php
                     } else {
                         ?> 
-                        <p>Selecione ou crie um treino</p>
+                        <p class="NoTreino">Selecione ou crie um treino</p>
                         <?php
                     }
                     ?>
