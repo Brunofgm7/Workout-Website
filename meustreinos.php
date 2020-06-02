@@ -70,7 +70,7 @@ if (isset($_SESSION["username"])) {
                             
                                 <input type="hidden" name="id" value="<?=$row['id']?>">
                                 <input type="hidden" name="titulo" id="titulo" value="<?=$row['titulo']?>">
-                                <button type="submit" name="editarTreino" class="editarTreino" onclick="changeTitle()"><i style="font-size: 20px;" class="fa fa-pencil" aria-hidden="true"></i></button>
+                                <a href="editarTreino.php?id=<?php echo $row["id"] ?>"><i style="font-size: 20px;" class="fa fa-pencil" aria-hidden="true"></i></a>
                                 <button type="submit" name="apagarTreino" class="apagarButton"><i style="font-size: 20px;" class="fa fa-trash" aria-hidden="true"></i></button>
                         </div></form>
                         </div>
@@ -121,13 +121,13 @@ if (isset($_SESSION["username"])) {
                                     $result2 = mysqli_query($db, $query);
                                     if(mysqli_num_rows($result2) == 1) {
                                         ?>
-                                        <p class="titulo"> <?php echo $titulo ?> <!--<a href="#" ><i class="material-icons editar">edit</i></a>--></p>
+                                        <p class="titulo"> <?php echo $titulo ?></p>
                                         <?php
                                         while($row = $result->fetch_assoc()) {
                                         ?>
                                         
                                         <div class="nome_exercicio">
-                                            <p><?php echo $row["nome"]?></p>                                
+                                            <p><?php echo $row["nome"]?> -> <?php echo $row["series_rep"]?> </p>                                
                                             <figure>
                                                 <img src='<?php echo $row["imagem"]?>' width="200" height="auto">
                                             </figure>                                        

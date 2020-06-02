@@ -1799,7 +1799,6 @@ td.hidden {
 }
 .nome_exercicio {
   height: auto;
-  width: 0;
   display: block;
 }
 .titulo {
