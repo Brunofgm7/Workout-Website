@@ -52,10 +52,7 @@ exit ("utilizador não definido.");
                             <p class="label">Alterar Foto</p>
                             <input type="file" id="fileToUpload" name="fileToUpload" />
                             <input type="hidden" name="foto" id="foto" value="<?=$utilizador['foto']?>">
-                            
-                        </div>
-                        
-                        
+                        </div>                       
                     </td>
                     
                 </tr>

@@ -30,9 +30,13 @@ h2 {
 }
 div p {
   font-family: "Poppins", sans-serif;
-  color: rgb(155, 155, 155);
+  color: rgb(92, 92, 92);
 }
-
+.NoTreino{
+  font-family: "Poppins", sans-serif;
+  color: rgb(92, 92, 92);
+  font-weight: bold;
+}
 .container img {
   padding-top: 4%;
 }
@@ -1529,14 +1533,20 @@ body {
   width: 90%;
   display: table;
   margin: auto;
+  height:auto;
+
 }
 .meusTreinosLeft {
-  border: 1px solid red;
-}
-.meusTreinosRight {
+  /* border-top: 1px solid black;
+  border-right:1px solid black; */
   border: 1px solid black;
+} 
+ .meusTreinosRight {
+  border-top: 1px solid black;
 }
-
+.nome_exercicio{
+  padding-left:3%;
+}
 .contentMeusTreinos .meusTreinosLeft {
   width: 40%;
   padding-left: 3%;
@@ -1546,7 +1556,7 @@ body {
 }
 .contentMeusTreinos .meusTreinosRight {
   width: 60%;
-  padding-left: 3%;
+  /* padding-left: 3%; */
   float: right;
   background-color: white;
   display: table-cell;
@@ -1563,6 +1573,9 @@ body {
 .contentMeusTreinos table {
   padding-top: 2%;
   width: 100%;
+  padding: 10px;
+  box-shadow: 5px 10px 18px #888888;
+  
 }
 .contentMeusTreinos table td {
   height: auto;
@@ -1761,22 +1774,40 @@ input[type="date"] {
 td.hidden {
   overflow: hidden;
 }
-
-.nome_treino a {
-  font-size: 1.4vw;
+.foto_treinos{
+  width:200px;
+  height:auto;
+  background-color:rgb(214, 214, 214);
+  text-align:center;
+  font-family:'poppins';
 }
+.nome_treino a {
+  font-size: 1.5vw;
+}
+.nome_treino{
+  height:auto; 
+  display:block;
+ 
+}
+.NoTreino{
+  text-align: center;
+  font-size:1.7vw;
 
+}
+.dormir {
+  display:inline-block;
+}
 .nome_exercicio {
   height: auto;
-  width: 0;
   display: block;
 }
 .titulo {
   font-size: 1.5vw;
-  color: black;
+  color: white;
   font-family: "poppins";
-  font-weight: bold;
+  /* font-weight: bold; */
   text-align: center;
+  background-color: grey;
 }
 
 .nome_exercicio p {
@@ -1800,7 +1831,7 @@ td.hidden {
 
 .nome_exercicio img {
   display: block;
-  border-radius: 0.8em;
+  border-radius: 0;
   max-width: 100%;
   height: auto;
 }
@@ -1810,27 +1841,45 @@ td.hidden {
   display: block;
 }
 
-.nome_treino p:hover {
-  cursor: pointer;
-}
 
-.nome_treino figure {
+
+p.treino_inacessivel {
+  color: red;
+}
+.dormir figure {
   display: none;
   position: absolute;
 }
 
 .apagarButton {
   border: 0;
-  background-color: black;
-  color: red;
+  color: rgb(209, 3, 3);
+  background-color: Transparent;
+    background-repeat:no-repeat;
+    border: none;
+    cursor:pointer;
+    overflow: hidden;
+    outline:none;
 }
-.nome_treino .desc {
-  padding: 15px;
-  text-align: center;
-  display: none;
+
+.apagarButton:hover{
+  color:rgb(145, 145, 145);
 }
-.nome_treino:hover .overlay {
-  height: 40%;
+.editarTreino{
+  background-color: Transparent;
+  background-repeat:no-repeat;
+  border: none;
+  cursor:pointer;
+  overflow: hidden;
+  outline:none;
+  color:rgb(39, 39, 39);
+}
+.editarTreino:hover{
+  color:rgb(209, 207, 207);
+}
+
+figure {
+  cursor:default;
 }
 
 .desc {
@@ -1844,18 +1893,18 @@ td.hidden {
   transform: translate(-50%, -50%);
   -ms-transform: translate(-50%, -50%);
 }
-.nome_treino .desc:hover {
+.dormir .desc:hover {
   display: block;
   background-color: black;
 }
-.nome_treino img {
+.dormir img {
   display: block;
-  border-radius: 0.8em;
+  border-radius: 0;
   max-width: 100%;
   height: auto;
 }
 
-.nome_treino:focus figure,
-.nome_treino:hover figure {
+.dormir:focus figure,
+.dormir:hover figure {
   display: block;
 }
