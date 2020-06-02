@@ -56,12 +56,27 @@ if (isset($_SESSION["username"])) {
                                 <div class="desc" style="background-color:red"><p><?php echo $row["descricao"] ?></p></div>
                             </figure> 
                         </a>
+                        <form action="meustreinos.php" method="post">
+                            <input type="hidden" name="id" value="<?=$row['id']?>">
+                            <input type="hidden" name="titulo" id="titulo" value="<?=$row['titulo']?>">
+                            <button type="submit" name="editarTreino" class="editarTreino" onclick="changeTitle()"><i class="fa fa-pencil" aria-hidden="true"></i></button>
+                            <button type="submit" name="apagarTreino" class="apagarButton"><i class="fa fa-trash" aria-hidden="true"></i></button>
+                        </form>
                         </div>
                     <?php
                         }
                     }
                     ?>
-                    
+                    <script type="text/javascript">
+                        function changeTitle(){
+                            var person = prompt("Please enter your new title");
+
+                            if (person == null || person == "") {
+                            } else {
+                                document.getElementById("titulo").value = person;
+                            }
+                        }
+                    </script>
                     <div>
                         <p><a href="adicionarTreino.php" ><i class="material-icons">add_circle</i></a></p>
                         <!-- <a href="#" style="margin:auto;border-top:0px;">Novo Treino</a> -->
