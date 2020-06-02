@@ -32,7 +32,7 @@ exit ("treino não definido.");
     <form action="uploadtreino.php?id=<?php echo $id ?>" method="post" enctype="multipart/form-data">
         <table>
             <thead>
-                <h2>O meu perfil</h2> 
+                <h2>Editar Treino #</h2> 
             </thead>
             <tbody>
                 <tr>
@@ -53,38 +53,31 @@ exit ("treino não definido.");
                 </tr>
                 <tr>  
                     <?php
+                    echo '<td>';
+                        ?><label for="dificuldade">Dificuldade</label><?php
+                    echo '</td>';
                     if($treino['dificuldade'] == 'facil') {
                         echo '<td>';
-                            echo '<input type="radio" name="dificuldade" id="dificuldade" value="facil" checked="checked"> Facil';
+                            echo '<input type="radio" name="dificuldade" id="dificuldade" value="facil" checked="checked">';?><label for="facil">Fácil</label><?php
+                            echo '<input type="radio" name="dificuldade" id="dificuldade" value="medio"> '; ?><label for="medio">Médio</label><?php
+                            echo '<input type="radio" name="dificuldade" id="dificuldade" value="dificil"> '; ?><label for="dificil">Dificil</label><?php
                         echo '</td>';
+                    } else if ($treino['dificuldade'] == 'medio') {     
                         echo '<td>';
-                            echo '<input type="radio" name="dificuldade" id="dificuldade" value="medio"> Medio'; 
-                        echo '</td>';
-                        echo '<td>';
-                            echo '<input type="radio" name="dificuldade" id="dificuldade" value="dificil"> Dificil'; 
-                        echo '</td>';
-                    }else if ($treino['dificuldade'] == 'medio') {     
-                        echo '<td>';
-                            echo '<input type="radio" name="dificuldade" id="dificuldade" value="facil"> Facil';
-                        echo '</td>';
-                        echo '<td>';
-                            echo '<input type="radio" name="dificuldade" id="dificuldade" value="medio" checked="checked"> Medio'; 
-                        echo '</td>';
-                        echo '<td>';
-                            echo '<input type="radio" name="dificuldade" id="dificuldade" value="dificil"> Dificil'; 
+                            echo '<input type="radio" name="dificuldade" id="dificuldade" value="facil">';?><label for="facil">Fácil</label><?php
+                            echo '<input type="radio" name="dificuldade" id="dificuldade" value="medio" checked="checked"> '; ?><label for="medio">Médio</label><?php
+                            echo '<input type="radio" name="dificuldade" id="dificuldade" value="dificil"> '; ?><label for="dificil">Dificil</label><?php
                         echo '</td>';
                     } else {
                         echo '<td>';
-                            echo '<input type="radio" name="dificuldade" id="dificuldade" value="facil"> Facil';
-                        echo '</td>';
-                        echo '<td>';
-                            echo '<input type="radio" name="dificuldade" id="dificuldade" value="medio"> Medio'; 
-                        echo '</td>';
-                        echo '<td>';
-                            echo '<input type="radio" name="dificuldade" id="dificuldade" value="dificil" checked="checked"> Dificil'; 
+                            echo '<input type="radio" name="dificuldade" id="dificuldade" value="facil"> ';?><label for="facil">Fácil</label><?php
+                            echo '<input type="radio" name="dificuldade" id="dificuldade" value="medio"> '; ?><label for="medio">Médio</label><?php
+                            echo '<input type="radio" name="dificuldade" id="dificuldade" value="dificil" checked="checked"> '; ?><label for="dificil">Dificil</label><?php
                         echo '</td>';
                     }
                     ?>
+
+  
                 </tr>
                 <tr>
                     <td colspan="2">
