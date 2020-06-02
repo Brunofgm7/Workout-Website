@@ -3,7 +3,6 @@
 include 'cabecalho.php';
 include 'database.php';
 include 'server.php';
-$msg="";
 
 ?>
 

@@ -522,6 +522,8 @@ if(isset($_POST['adicionarTreino'])) {
         $uploadOk = 1;
 		$imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
             
+        if (file_exists($_FILES["fileToUpload"]["tmp_name"])){           
+
         // Check if image file is a actual image or fake image
         if (isset($_POST['fileToUpload'])){
             $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
@@ -563,6 +565,12 @@ if(isset($_POST['adicionarTreino'])) {
                 array_push($errors, "Sorry, there was an error uploading your file.");
             }
         } 
+    } else {
+        $sql = "INSERT INTO treinos (id_utilizador, titulo, descricao, dificuldade) VALUES ('$id','$nomeTreino','$descricaoTreino','$dificuldade')";
+        mysqli_query($db,$sql);
+        header('location: meustreinos.php');
+    }
+
     }
 }
 
@@ -592,6 +600,8 @@ if(isset($_POST['adicionarExercicio'])) {
         $uploadOk = 1;
 		$imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
             
+        if (file_exists($_FILES["fileToUpload"]["tmp_name"])){           
+
         // Check if image file is a actual image or fake image
         if (isset($_POST['fileToUpload'])){
             $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
@@ -632,6 +642,11 @@ if(isset($_POST['adicionarExercicio'])) {
                 array_push($errors, "Sorry, there was an error uploading your file.");
             }
         } 
+    } else {
+            $sql = "INSERT INTO treinos (id_utilizador, titulo, descricao, dificuldade) VALUES ('$id','$nomeTreino','$descricaoTreino','$dificuldade')";
+            mysqli_query($db,$sql);
+            header('location: meustreinos.php');
+        }
     }
 }
 
