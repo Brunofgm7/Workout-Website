@@ -1541,9 +1541,10 @@ body {
   border-right:1px solid black; */
   border: 1px solid black;
 } 
- .meusTreinosRight {
+ /* .meusTreinosRight {
   border-top: 1px solid black;
-}
+} */
+
 .nome_exercicio{
   padding-left:3%;
 }
@@ -1573,10 +1574,12 @@ body {
 .contentMeusTreinos table {
   padding-top: 2%;
   width: 100%;
-  padding: 10px;
-  box-shadow: 5px 10px 18px #888888;
-  
+  padding: 2px;
+  box-shadow: 0 5px 5px rgba(182, 182, 182, 0.75);
+  border:1px solid black;
+  border-radius:5px;
 }
+
 .contentMeusTreinos table td {
   height: auto;
 }
@@ -1840,8 +1843,6 @@ td.hidden {
 .nome_exercicio:hover figure {
   display: block;
 }
-
-
 
 p.treino_inacessivel {
   color: red;

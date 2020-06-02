@@ -52,10 +52,7 @@ if (isset($_SESSION["username"])) {
                             <a href="meustreinos.php?id=<?php echo $row["id"] ?>">
                             <form action="meustreinos.php" method="post">
                                 <div class="dormir"><b><?php echo $row["titulo"] ?></b>
-                                <!-- <figure>
-                                    <img src='<?php echo $row["imagem"]?>' width="200" height="auto">
-                                    <div class="desc" style="background-color:red"><p></p></div>
-                                </figure>  -->
+                                
                                 <figure>
                                     <div class="nome_exercicio">
                                         
@@ -126,11 +123,11 @@ if (isset($_SESSION["username"])) {
                                         while($row = $result->fetch_assoc()) {
                                         ?>
                                         
-                                        <div class="nome_exercicio">
-                                            <p><?php echo $row["nome"]?> -> <?php echo $row["series_rep"]?> </p>                                
+                                        <div class="nome_exercicio" >
+                                            <p><?php echo $row["nome"]?> -> <?php echo $row["series_rep"]?> </p>                             
                                             <figure>
                                                 <img src='<?php echo $row["imagem"]?>' width="200" height="auto">
-                                            </figure>                                        
+                                            </figure>                                          
                                         </div>
                                            
 
