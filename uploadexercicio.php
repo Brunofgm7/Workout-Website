@@ -2,11 +2,10 @@
 include 'database.php';
 include 'server.php';
 
+$id = $_GET['id'];
 
-
-if(!empty($_POST))
-    {
-    	$target_dir = "fotos/";
+if(!empty($_POST)) {
+    	$target_dir = "fotosTreinosExercicios/";
 		$target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
 		$uploadOk = 1;
 		$imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
@@ -42,33 +41,24 @@ if(!empty($_POST))
 		} else {
 		  if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
 		    echo "The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploaded.";
-		    rename($target_dir. $_FILES["fileToUpload"]["name"], $target_dir ."perfil_".$_SESSION["username"].".jpg");
+			rename($target_dir. $_FILES["fileToUpload"]["name"], $target_dir ."exercicio_".$titulo."_".$_SESSION["username"].".jpg");
 		  } else {
 		    echo "Sorry, there was an error uploading your file.";
 		  }
 		}
-
     }
-
         
-        $nome=isset($_POST["nome"])?$_POST["nome"]:'';
-        $dataNasc=isset($_POST["dataNasc"])?$_POST["dataNasc"]:'';
-        $email=isset($_POST["email"])?$_POST["email"]:'';
-        $username=isset($_POST["username"])?$_POST["username"]:'';
-        $password=isset($_POST["password"])?$_POST["password"]:'';
-        //$foto=isset($_POST["foto"])?$_POST["foto"]:'';
-        //$foto=$utilizador['foto'];
-        $foto=$_FILES["fileToUpload"]["name"]!=""?"fotos/"."perfil_".$_SESSION["username"].".jpg":$_POST["foto"];
-        $genero=isset($_POST["genero"])?$_POST["genero"]:'';
-    
-        //criar o update na base de dados
-        $smt=$pdo->prepare('UPDATE utilizadores SET  nome=?,dataNasc=?,email=?,username=?,foto=?,genero=? WHERE username=?');
-        $smt->execute([$nome,$dataNasc,$email,$username,$foto,$genero,$_SESSION["username"]]);
-        $msg="Registo alterado com sucesso";
+	$nome=isset($_POST["nome"])?$_POST["nome"]:'';
+	$series_rep=isset($_POST["series_rep"])?$_POST["series_rep"]:'';
+	$dificuldade=isset($_POST["dificuldade"])?$_POST["dificuldade"]:'';
+	$imagem=$_FILES["fileToUpload"]["name"]!=""?$target_dir."exercicio_".$nomeTreino."_".$_SESSION["username"].".jpg":"";
+
+
+	//criar o update na base de dados
+	$smt=$pdo->prepare('UPDATE exercicios SET nome=?,series_rep=?,dificuldade=?,imagem=? WHERE id_exerc=?');
+	$smt->execute([$nome,$series_rep,$dificuldade,$imagem,$id]);
         
 
+header('location: meustreinos.php?id='.$id);
 
-
-
-header('Location: perfil.php');
 ?>

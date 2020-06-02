@@ -32,7 +32,7 @@ exit ("treino não definido.");
     <form action="uploadtreino.php?id=<?php echo $id ?>" method="post" enctype="multipart/form-data">
         <table>
             <thead>
-                <h2>Editar Treino #</h2> 
+                <h2>Editar Treino</h2> 
             </thead>
             <tbody>
                 <tr>

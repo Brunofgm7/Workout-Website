@@ -113,7 +113,7 @@ if (isset($_SESSION["username"])) {
                 $result2 = mysqli_query($db, $query);
                 if (mysqli_num_rows($result2) == 1) {
     ?>
-                    <p class="titulo"> <?php echo $titulo ?></p>
+                    <p class="titulo"> <?php echo $titulo ?><a href="#"><i class="material-icons editar">edit</i></a></p>
                     <?php
                     while ($row = $result->fetch_assoc()) {
                     ?>
@@ -123,8 +123,6 @@ if (isset($_SESSION["username"])) {
                             <figure>
                                 <img src='<?php echo $row["imagem"] ?>' width="200" height="auto">
                             </figure>
-                            <a href="editarExercicio.php?id=<?php echo $row["id"] ?>"><i style="font-size: 20px;" class="fa fa-pencil" aria-hidden="true"></i></a>
-                            <button type="submit" name="apagarTreino" class="apagarButton"><i style="font-size: 20px;" class="fa fa-trash" aria-hidden="true"></i></button>
                         </div>
 
 
