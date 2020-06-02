@@ -643,7 +643,7 @@ if(isset($_POST['adicionarExercicio'])) {
             }
         } 
     } else {
-            $sql = "INSERT INTO treinos (id_utilizador, titulo, descricao, dificuldade) VALUES ('$id','$nomeTreino','$descricaoTreino','$dificuldade')";
+            $sql = "INSERT INTO exercicios (id_treino, nome, series_rep, dificuldade) VALUES ('$id_treino','$nomeExercicio','$repeticoes','$dificuldade')";
             mysqli_query($db,$sql);
             header('location: meustreinos.php');
         }

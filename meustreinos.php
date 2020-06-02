@@ -67,16 +67,7 @@ if (isset($_SESSION["username"])) {
                         }
                     }
                     ?>
-                    <script type="text/javascript">
-                        function changeTitle(){
-                            var person = prompt("Please enter your new title");
-
-                            if (person == null || person == "") {
-                            } else {
-                                document.getElementById("titulo").value = person;
-                            }
-                        }
-                    </script>
+                    
                     <div>
                         <p><a href="adicionarTreino.php" ><i class="material-icons">add_circle</i></a></p>
                         <!-- <a href="#" style="margin:auto;border-top:0px;">Novo Treino</a> -->
@@ -110,7 +101,7 @@ if (isset($_SESSION["username"])) {
                                     $result2 = mysqli_query($db, $query);
                                     if(mysqli_num_rows($result2) == 1) {
                                         ?>
-                                        <p class="titulo"> <?php echo $titulo ?> <a href="#" ><i class="material-icons editar">edit</i></a></p>
+                                        <p class="titulo"> <?php echo $titulo ?><a href="#" ><i class="material-icons editar">edit</i></a></p>
                                         <?php
                                         while($row = $result->fetch_assoc()) {
                                         ?>
@@ -143,3 +134,14 @@ if (isset($_SESSION["username"])) {
         </tr>
     </table>
 </div>
+
+<script type="text/javascript">
+    function changeTitle(){
+        var person = prompt("Please enter your new title");
+
+        if (person == null || person == "") {
+        } else {
+            document.getElementById("titulo").value = person;
+        }
+    }
+</script>
