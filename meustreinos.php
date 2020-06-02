@@ -48,20 +48,21 @@ if (isset($_SESSION["username"])) {
                     if($result = $db->query($sql)) {
                         while($row = $result->fetch_assoc()) {
                         ?>
-                        <div class="nome_treino">
-                        <a href="meustreinos.php?id=<?php echo $row["id"] ?>">
-                            <b><?php echo $row["titulo"] ?></b>
-                            <figure>
-                                <img src='<?php echo $row["imagem"]?>' width="200" height="auto">
-                                <div class="desc" style="background-color:red"><p><?php echo $row["descricao"] ?></p></div>
-                            </figure> 
-                        </a>
-                        <form action="meustreinos.php" method="post">
-                            <input type="hidden" name="id" value="<?=$row['id']?>">
-                            <input type="hidden" name="titulo" id="titulo" value="<?=$row['titulo']?>">
-                            <button type="submit" name="editarTreino" class="editarTreino" onclick="changeTitle()"><i class="fa fa-pencil" aria-hidden="true"></i></button>
-                            <button type="submit" name="apagarTreino" class="apagarButton"><i class="fa fa-trash" aria-hidden="true"></i></button>
-                        </form>
+                        <div class="nome_treino" >
+                            <a href="meustreinos.php?id=<?php echo $row["id"] ?>">
+                            <form action="meustreinos.php" method="post">
+                                <div class="dormir"><b><?php echo $row["titulo"] ?></b>
+                                <figure>
+                                    <img src='<?php echo $row["imagem"]?>' width="200" height="auto">
+                                    <div class="desc" style="background-color:red"><p><?php echo $row["descricao"] ?></p></div>
+                                </figure> 
+                            </a>
+                            
+                                <input type="hidden" name="id" value="<?=$row['id']?>">
+                                <input type="hidden" name="titulo" id="titulo" value="<?=$row['titulo']?>">
+                                <button type="submit" name="editarTreino" class="editarTreino" onclick="changeTitle()"><i style="font-size: 20px;" class="fa fa-pencil" aria-hidden="true"></i></button>
+                                <button type="submit" name="apagarTreino" class="apagarButton"><i style="font-size: 20px;" class="fa fa-trash" aria-hidden="true"></i></button>
+                        </div></form>
                         </div>
                     <?php
                         }
