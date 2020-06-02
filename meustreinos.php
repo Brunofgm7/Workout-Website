@@ -59,7 +59,7 @@ if (isset($_SESSION["username"])) {
                         <form action="meustreinos.php" method="post">
                             <input type="hidden" name="id" value="<?=$row['id']?>">
                             <input type="hidden" name="titulo" id="titulo" value="<?=$row['titulo']?>">
-                            <button type="submit" name="editarTreino" class="editarTreino" onclick="changeTitle()"><i class="fa fa-pencil" aria-hidden="true"></i></button>
+                            <a href="editarTreino.php?id=<?php echo $row["id"] ?>"><i class="fa fa-pencil" aria-hidden="true"></a></i>
                             <button type="submit" name="apagarTreino" class="apagarButton"><i class="fa fa-trash" aria-hidden="true"></i></button>
                         </form>
                         </div>
