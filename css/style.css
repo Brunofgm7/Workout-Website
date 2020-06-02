@@ -1809,3 +1809,8 @@ p.treino_inacessivel {
   color: red;
 }
 
+.apagarButton{
+  border: 0;
+  background-color: black;
+  color: red;
+}

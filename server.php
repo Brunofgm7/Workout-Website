@@ -518,10 +518,12 @@ if(isset($_POST['adicionarTreino'])) {
         $id = $row[0];
 
         $target_dir = "fotosTreinosExercicios/";
-		$target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
+        $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
         $uploadOk = 1;
-		$imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+        $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
             
+        if (file_exists($_FILES["fileToUpload"]["tmp_name"])){           
+
         // Check if image file is a actual image or fake image
         if (isset($_POST['fileToUpload'])){
             $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
@@ -533,18 +535,18 @@ if(isset($_POST['adicionarTreino'])) {
                 $uploadOk = 0;
             }    
         } 
-		
-		// Check file size
-		if ($_FILES["fileToUpload"]["size"] > 500000) {
+        
+        // Check file size
+        if ($_FILES["fileToUpload"]["size"] > 500000) {
             array_push($errors, "Sorry, your file is too large.");
-		    $uploadOk = 0;
-		}
+            $uploadOk = 0;
+        }
 
-		// Allow certain file formats
-		if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg")
-		{
+        // Allow certain file formats
+        if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg")
+        {
             array_push($errors, "Sorry, only JPG, JPEG, PNG files are allowed.");
-		    $uploadOk = 0;
+            $uploadOk = 0;
         }
         
         if ($uploadOk == 0) {
@@ -563,6 +565,12 @@ if(isset($_POST['adicionarTreino'])) {
                 array_push($errors, "Sorry, there was an error uploading your file.");
             }
         } 
+    } else {
+        $sql = "INSERT INTO treinos (id_utilizador, titulo, descricao, dificuldade) VALUES ('$id','$nomeTreino','$descricaoTreino','$dificuldade')";
+        mysqli_query($db,$sql);
+        header('location: meustreinos.php');
+    }
+
     }
 }
 
@@ -588,10 +596,12 @@ if(isset($_POST['adicionarExercicio'])) {
         $id = $row[0];
 
         $target_dir = "fotosTreinosExercicios/";
-		$target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
+        $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
         $uploadOk = 1;
-		$imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+        $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
             
+        if (file_exists($_FILES["fileToUpload"]["tmp_name"])){           
+
         // Check if image file is a actual image or fake image
         if (isset($_POST['fileToUpload'])){
             $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
@@ -603,18 +613,18 @@ if(isset($_POST['adicionarExercicio'])) {
                 $uploadOk = 0;
             }    
         } 
-		
-		// Check file size
-		if ($_FILES["fileToUpload"]["size"] > 500000) {
+        
+        // Check file size
+        if ($_FILES["fileToUpload"]["size"] > 500000) {
             array_push($errors, "Sorry, your file is too large.");
-		    $uploadOk = 0;
-		}
+            $uploadOk = 0;
+        }
 
-		// Allow certain file formats
-		if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg")
-		{
+        // Allow certain file formats
+        if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg")
+        {
             array_push($errors, "Sorry, only JPG, JPEG, PNG files are allowed.");
-		    $uploadOk = 0;
+            $uploadOk = 0;
         }
         
         if ($uploadOk == 0) {
@@ -632,6 +642,11 @@ if(isset($_POST['adicionarExercicio'])) {
                 array_push($errors, "Sorry, there was an error uploading your file.");
             }
         } 
+    } else {
+            $sql = "INSERT INTO treinos (id_utilizador, titulo, descricao, dificuldade) VALUES ('$id','$nomeTreino','$descricaoTreino','$dificuldade')";
+            mysqli_query($db,$sql);
+            header('location: meustreinos.php');
+        }
     }
 }
 
@@ -682,6 +697,27 @@ if(isset($_POST['tprofessor'])) {
 
             }
         }
+}
+
+if(isset($_POST['editarTreino'])){
+    $id=$_POST['id'];
+    $titulo=$_POST['titulo'];
+    $query = "UPDATE treinos SET titulo='$titulo' WHERE id=$id";
+    $result = mysqli_query($db, $query);
+    header('Location: meustreinos.php');
+
+}
+
+
+if(isset($_POST['apagarTreino'])){
+    $id=$_POST['id'];
+    $query = "DELETE FROM treinos WHERE id=$id";
+    $result = mysqli_query($db, $query);
+
+    $query = "DELETE FROM exercicios WHERE id_treino=$id";
+    $result = mysqli_query($db, $query);
+
+    header('Location: meustreinos.php');
 }
 
 ?>
