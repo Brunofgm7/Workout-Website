@@ -9,9 +9,9 @@ To start using this code you need to import the database to your phpmyadmin.
 Create a folder and save all the files inside the folder you created.
 
 1. Create a database with the name "workout". Upload the file "workout(2).sql" and it creates all the tables you need.
-2. Unzip PHPmailer.zip and place it in the root of your folder.
 
-For now was only tested in localhost.
+
+For now this website was tested only in localhost.
 
 ### Prerequisites
 
