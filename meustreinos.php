@@ -69,7 +69,7 @@ if (isset($_SESSION["username"])) {
                                     <input type="hidden" name="id" value="<?= $row['id'] ?>">
                                     <input type="hidden" name="titulo" id="titulo" value="<?= $row['titulo'] ?>">
                                     <a href="editarTreino.php?id=<?php echo $row["id"] ?>" class="editarTreino"><i style="font-size: 20px;" class="fa fa-pencil" aria-hidden="true"></i></a>
-                                    <button type="submit" name="apagarTreino" class="apagarButton"><i style="font-size: 20px;" class="fa fa-trash" aria-hidden="true"></i></button>
+                                    <button type="submit" name="apagarTreino" class="apagarButton"><i style="font-size: 20px;" class="fa fa-trash" aria-hidden="true" onClick="apagarex();"></i></button>
                                 </div>
                                 </form>
                     </div>
@@ -125,7 +125,7 @@ if (isset($_SESSION["username"])) {
                                     </figure>
                                     <a href="editarExercicio.php?id=<?php echo $row["id_exerc"] ?>" class="editarTreino"><i style="font-size: 20px;" class="fa fa-pencil" aria-hidden="true"></i></a>
                                     <input type="hidden" name="id_exercicio" id="id_exercicio" value="<?=$row['id_exerc']?>">
-                                    <button type="submit" name="apagarExercicio" class="apagarButton"><i style="font-size: 20px;" class="fa fa-trash" aria-hidden="true"></i></button>
+                                    <button type="submit" name="apagarExercicio" class="apagarButton"><i style="font-size: 20px;" class="fa fa-trash" aria-hidden="true" onClick="apagarex();"></i></button>
                                 </form>
                             </div>
 
@@ -154,11 +154,20 @@ if (isset($_SESSION["username"])) {
     </div>
 </body>
 <script type="text/javascript">
-    function changeTitle() {
-        var person = prompt("Please enter your new title");
-
-        if (person == null || person == "") {} else {
-            document.getElementById("titulo").value = person;
+    function apagarex() {
+        var r = confirm("Tem a certeza que pretende apagar o exercício?" );
+        if (r == true) {
+            return true;
+        } else {
+            event.preventDefault();
+        }
+    }
+    function apagartr() {
+        var r = confirm("Tem a certeza que pretende apagar o treino?" );
+        if (r == true) {
+            return true;
+        } else {
+            event.preventDefault();
         }
     }
 </script>
