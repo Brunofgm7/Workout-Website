@@ -60,5 +60,6 @@ if(!empty($_POST)) {
 	$smt->execute([$titulo,$descricao,$dificuldade,$imagem,$id]);
         
 
-header('Location: meustreinos.php');
+header('location: meustreinos.php?id='.$id);
+
 ?>
