@@ -32,7 +32,7 @@ div p {
   font-family: "Poppins", sans-serif;
   color: rgb(92, 92, 92);
 }
-.NoTreino{
+.NoTreino {
   font-family: "Poppins", sans-serif;
   color: rgb(92, 92, 92);
   font-weight: bold;
@@ -1194,6 +1194,9 @@ body {
   text-align: center;
   text-align-last: center;
 }
+.contentPass .left {
+  text-align-last: left;
+}
 .contentPass input:focus {
   border: 3px solid #555;
 }
@@ -1337,6 +1340,9 @@ body {
 .contentTProfessor * {
   background-color: white;
   text-align-last: center;
+}
+.contentTProfessor .left {
+  text-align-last: left;
 }
 .contentTProfessor input:focus {
   border: 3px solid #555;
@@ -1533,8 +1539,7 @@ body {
   width: 90%;
   display: table;
   margin: auto;
-  height:auto;
-  
+  height: auto;
 }
 .opa {
   overflow-x: visible;
@@ -1543,13 +1548,13 @@ body {
   /* border-top: 1px solid black;
   border-right:1px solid black; */
   border: 1px solid black;
-} 
- /* .meusTreinosRight {
+}
+/* .meusTreinosRight {
   border-top: 1px solid black;
 } */
 
-.nome_exercicio{
-  padding-left:3%;
+.nome_exercicio {
+  padding-left: 3%;
 }
 .contentMeusTreinos .meusTreinosLeft {
   width: 40%;
@@ -1577,10 +1582,11 @@ body {
 .contentMeusTreinos table {
   padding-top: 2%;
   width: 100%;
-  padding: 2px;box-shadow: 0px 11px 39px -8px rgba(0,0,0,0.99);
-  border:1px solid black;
-  border-radius:5px;
-  height:100%;
+  padding: 2px;
+  box-shadow: 0px 11px 39px -8px rgba(0, 0, 0, 0.99);
+  border: 1px solid black;
+  border-radius: 5px;
+  height: 100%;
 }
 
 .contentMeusTreinos table td {
@@ -1780,28 +1786,26 @@ input[type="date"] {
 td.hidden {
   overflow: hidden;
 }
-.foto_treinos{
-  width:200px;
-  height:auto;
-  background-color:rgb(214, 214, 214);
-  text-align:center;
-  font-family:'poppins';
+.foto_treinos {
+  width: 200px;
+  height: auto;
+  background-color: rgb(214, 214, 214);
+  text-align: center;
+  font-family: "poppins";
 }
 .nome_treino a {
   font-size: 1.5vw;
 }
-.nome_treino{
-  height:auto; 
-  display:block;
- 
+.nome_treino {
+  height: auto;
+  display: block;
 }
-.NoTreino{
+.NoTreino {
   text-align: center;
-  font-size:1.7vw;
-
+  font-size: 1.7vw;
 }
 .dormir {
-  display:inline-block;
+  display: inline-block;
 }
 .nome_exercicio {
   height: auto;
@@ -1858,31 +1862,31 @@ p.treino_inacessivel {
   border: 0;
   color: rgb(209, 3, 3);
   background-color: Transparent;
-    background-repeat:no-repeat;
-    border: none;
-    cursor:pointer;
-    overflow: hidden;
-    outline:none;
+  background-repeat: no-repeat;
+  border: none;
+  cursor: pointer;
+  overflow: hidden;
+  outline: none;
 }
 
-.apagarButton:hover{
-  color:rgb(145, 145, 145);
+.apagarButton:hover {
+  color: rgb(145, 145, 145);
 }
-.editarTreino{
+.editarTreino {
   background-color: Transparent;
-  background-repeat:no-repeat;
+  background-repeat: no-repeat;
   border: none;
-  cursor:pointer;
+  cursor: pointer;
   overflow: hidden;
-  outline:none;
-  color:rgb(39, 39, 39);
+  outline: none;
+  color: rgb(39, 39, 39);
 }
-.editarTreino:hover{
-  color:rgb(209, 207, 207);
+.editarTreino:hover {
+  color: rgb(209, 207, 207);
 }
 
 figure {
-  cursor:default;
+  cursor: default;
 }
 
 .desc {
