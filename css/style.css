@@ -1534,16 +1534,20 @@ body {
   display: table;
   margin: auto;
   height:auto;
-
+  
+}
+.opa {
+  overflow-x: visible;
 }
 .meusTreinosLeft {
   /* border-top: 1px solid black;
   border-right:1px solid black; */
   border: 1px solid black;
 } 
- .meusTreinosRight {
+ /* .meusTreinosRight {
   border-top: 1px solid black;
-}
+} */
+
 .nome_exercicio{
   padding-left:3%;
 }
@@ -1573,10 +1577,12 @@ body {
 .contentMeusTreinos table {
   padding-top: 2%;
   width: 100%;
-  padding: 10px;
-  box-shadow: 5px 10px 18px #888888;
-  
+  padding: 2px;box-shadow: 0px 11px 39px -8px rgba(0,0,0,0.99);
+  border:1px solid black;
+  border-radius:5px;
+  height:100%;
 }
+
 .contentMeusTreinos table td {
   height: auto;
 }
@@ -1803,11 +1809,10 @@ td.hidden {
 }
 .titulo {
   font-size: 1.5vw;
-  color: white;
+  color: black;
   font-family: "poppins";
-  /* font-weight: bold; */
+  font-weight: bold;
   text-align: center;
-  background-color: grey;
 }
 
 .nome_exercicio p {
@@ -1840,8 +1845,6 @@ td.hidden {
 .nome_exercicio:hover figure {
   display: block;
 }
-
-
 
 p.treino_inacessivel {
   color: red;
