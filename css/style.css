@@ -1557,6 +1557,7 @@ body {
   float: left;
   background-color: rgb(77, 76, 76);
   display: table-cell;
+  height:100%;
 }
 .contentMeusTreinos .meusTreinosRight {
   width: 60%;
