@@ -29,7 +29,8 @@ if(!$utilizador)
 }
 else
 {
-exit ("utilizador não definido.");
+header("location: index.php");
+//exit ("utilizador não definido.");
 }
 
 

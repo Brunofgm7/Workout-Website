@@ -4,6 +4,10 @@ include 'cabecalho.php';
 include 'database.php';
 include 'server.php';
 
+if(isset($_SESSION['username'])){
+    header('location: perfil.php');
+}
+
 ?>
 
 <body>

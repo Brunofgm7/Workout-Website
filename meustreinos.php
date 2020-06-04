@@ -18,7 +18,8 @@ if (isset($_SESSION["username"])) {
         exit("utlizador inexistente.");
     }
 } else {
-    exit("utilizador não definido.");
+    header("location: index.php");
+    //exit("utilizador não definido.");
 }
 
 ?>
